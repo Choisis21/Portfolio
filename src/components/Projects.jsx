@@ -15,8 +15,8 @@ const categories = ["All", "Code", "No Code", "Dark", "Light", "Minimalist", "Fa
 const items = [
   { name: "Anna Filou", img: AnnaImg, link: "https://corvusaurum.com/", category: "Code", type: "NGO", description: "Professional website project." },
   { name: "Güven Sözmen", img: GuvenImg, link: "https://divineroyalpriesthood.org/", category: "Dark", type: "NFT", description: "Clean minimalist portfolio." },
-  { name: "Chosen Akinnola", img: ChosenImg, link: "https://chosen1.vercel.app/", category: "Dark", type: "Portfolio", description: "Dark space-themed portfolio website." },
-  { name: "Noah Buscher", img: NoahImg, link: "https://chosen1.vercel.app/", category: "Dark", type: "Portfolio", description: "High-performance coded website." },
+  { name: "Chosen Akinnola", img: ChosenImg, link: "https://chosen-akinnola.vercel.app/", category: "Dark", type: "Portfolio", description: "Dark space-themed portfolio website." },
+  { name: "Noah Buscher", img: NoahImg, link: "https://chosen-akinnola.vercel.app/", category: "Dark", type: "Portfolio", description: "High-performance coded website." },
   { name: "Chukwuemeke Ofuzor", img: ChukwuImg, link: "https://divineroyalpriesthood.org/", category: "Light", type: "Client", description: "Bold dark interface." },
   { name: "Patrick David", img: PatrickImg, link: "https://corvusaurum.com/", category: "Dark", type: "E-commerce", description: "Premium elegant design." },
 ];
