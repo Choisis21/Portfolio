@@ -51,6 +51,7 @@ export const Navbar = () => {
               <span className="text-white">Chosen</span>
             </a>
 
+            {/* DESKTOP NAV */}
             <div className="hidden md:flex items-center gap-8 text-sm font-medium">
               {navItems.map((item) => (
                 <a
@@ -66,6 +67,7 @@ export const Navbar = () => {
               ))}
             </div>
 
+            {/* DESKTOP ACTIONS */}
             <div className="hidden md:flex items-center gap-4">
               <a
                 href="#contact"
@@ -77,6 +79,7 @@ export const Navbar = () => {
               <ThemeToggle insideNavbar />
             </div>
 
+            {/* MOBILE MENU BUTTON */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden text-white p-2"
@@ -87,7 +90,7 @@ export const Navbar = () => {
         </div>
       </nav>
 
-      {/* MOBILE MENU OUTSIDE NAV */}
+      {/* MOBILE MENU */}
       <div
         className={cn(
           "fixed inset-0 z-40 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center space-y-8 text-xl md:hidden transition-all",
@@ -115,7 +118,8 @@ export const Navbar = () => {
           Hire me
         </a>
 
-        <ThemeToggle insideNavbar />
+        {/* MOBILE THEME TOGGLE */}
+        <ThemeToggle insideNavbar onClick={() => setIsMenuOpen(false)} />
       </div>
     </>
   );
