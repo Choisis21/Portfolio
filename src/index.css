@@ -142,7 +142,7 @@
 
 /* Card utility using CSS variable for background to avoid color-mix */
 @utility card {
-  @apply rounded-xl p-6 shadow-md;
+  @apply rounded-xl shadow-md overflow-hidden;
   background-color: hsl(var(--card));
 }
 

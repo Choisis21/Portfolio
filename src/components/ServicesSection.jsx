@@ -47,7 +47,7 @@ const ServicesSection = () => {
           {/* ---- LEFT: SERVICE CARDS (TEXT) ---- */}
           <div className="grid sm:grid-cols-2 gap-6">
             {/* WEB DEVELOPMENT */}
-            <div className="card card-hover animate-fade-in-delay-1 text-center sm:text-left lg:mb-15">
+            <div className="card card-hover animate-fade-in-delay-1 pt-5 pb-10 px-10 text-center sm:text-left lg:mb-15">
               <div className={iconWrapper}>{`</>`}</div>
               <h3 className="font-semibold text-lg mt-3 mb-2">Web Development</h3>
               <p className="text-sm opacity-75">
@@ -56,7 +56,7 @@ const ServicesSection = () => {
             </div>
 
             {/* FRONT-END DEVELOPMENT */}
-            <div className="card card-hover animate-fade-in-delay-2 text-center sm:text-left lg:mt-15">
+            <div className="card card-hover animate-fade-in-delay-2 pt-5 pb-10 px-10 text-center sm:text-left lg:mt-15">
               <div className={iconWrapper}>{`{...}`}</div>
               <h3 className="font-semibold text-lg mt-3 mb-2">Front-End Development</h3>
               <p className="text-sm opacity-75">
@@ -65,7 +65,7 @@ const ServicesSection = () => {
             </div>
 
             {/* WEBSITE MAINTENANCE */}
-            <div className="card card-hover animate-fade-in-delay-3 text-center sm:text-left lg:mb-15">
+            <div className="card card-hover animate-fade-in-delay-3 pt-5 pb-10 px-10 text-center sm:text-left lg:mb-15">
               <div className={iconWrapper}>
                 <Wrench className="w-7 h-7 text-foreground" />
               </div>
@@ -76,7 +76,7 @@ const ServicesSection = () => {
             </div>
 
             {/* DNS MANAGEMENT */}
-            <div className="card card-hover animate-fade-in-delay-4 text-center sm:text-left lg:mt-15">
+            <div className="card card-hover animate-fade-in-delay-4 pt-5 pb-10 px-10 text-center sm:text-left lg:mt-15">
               <div className={iconWrapper}>
                 <Globe className="w-7 h-7 text-foreground" />
               </div>

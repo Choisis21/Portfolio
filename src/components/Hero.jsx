@@ -25,7 +25,7 @@ export default function Hero() {
 
         {/* Main Title */}
         <h1 className="text-3xl md:text-5xl font-bold mt-4 animate-fade-in-delay-1">
-          I’m <span className="text-primary">Chosen</span>
+          I am <span className="text-primary">Chosen</span>
         </h1>
 
         <h2 className="text-2xl md:text-4xl font-semibold mt-2 mb-6 animate-fade-in-delay-2">
@@ -60,11 +60,11 @@ export default function Hero() {
             />
 
             {/* Floating skill icons */}
-            <img src={htmlIcon} className="w-10 absolute -top-4 left-0 animate-float" alt="HTML Icon" />
+            <img src={htmlIcon} className="w-10 absolute lg:-top-10 -top-8 lg:left-20 left-10 animate-float" alt="HTML Icon" />
             <img src={cssIcon} className="w-10 absolute top-10 -right-4 animate-float" alt="CSS Icon" />
             <img src={wordpressIcon} className="w-10 absolute -bottom-4 right-4 animate-float" alt="WordPress Icon" />
-            <img src={javascriptIcon} className="w-10 absolute -left-4 bottom-10 animate-float" alt="JavaScript Icon" />
-            <img src={reactIcon} className="w-10 absolute top-24 -left-14 animate-float" alt="React Icon" />
+            <img src={javascriptIcon} className="w-10 absolute -left-4 lg:bottom-5 -bottom-5 animate-float" alt="JavaScript Icon" />
+            <img src={reactIcon} className="w-10 absolute top-20 lg:top-24 lg:-left-14 -left-10 animate-float" alt="React Icon" />
           </div>
 
           {/* Stats */}

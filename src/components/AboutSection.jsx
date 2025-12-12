@@ -25,7 +25,7 @@ const AboutSection = () => {
           />
 
           {/* Decorative lightning icon */}
-          <span className="absolute top-4 right-6 text-primary text-3xl animate-float font-bold">
+          <span className="absolute top-4 -right-5 lg:right-20 text-primary text-3xl rotate-20 animate-float font-bold">
             ⚡
           </span>
 
@@ -62,7 +62,7 @@ const AboutSection = () => {
 
           {/* Description */}
           <p className="leading-relaxed text-base md:text-lg mb-4">
-            I’m a passionate Web Developer who loves turning ideas into
+            I am a passionate Web Developer who loves turning ideas into
             interactive digital experiences. I focus on creating clean,
             responsive, and user-friendly websites that not only look good but
             also perform smoothly across all devices.
@@ -72,12 +72,12 @@ const AboutSection = () => {
             With a strong eye for design and detail, I enjoy blending creativity
             and functionality to build websites that leave a lasting impression.
             I work with modern technologies like <span className="font-semibold">HTML, CSS, JavaScript, React, and Node.js</span>,
-            and I'm always learning new tools to stay ahead in the ever-evolving
+            and I am always learning new tools to stay ahead in the ever-evolving
             tech space.
           </p>
 
           <p className="leading-relaxed text-base md:text-lg mb-8">
-            When I’m not coding, I'm exploring design trends, improving my UI/UX
+            When I am not coding, I am exploring design trends, improving my UI/UX
             skills, or brainstorming ways to make the web more intuitive and
             engaging.
           </p>
