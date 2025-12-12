@@ -28,7 +28,7 @@ export const Navbar = () => {
         className={cn(
           "w-full fixed top-3 z-50 transition-all duration-300",
           scrolled
-            ? "bg-neutral-900/70 backdrop-blur-xl border-b border-white/10 shadow-md"
+            ? "bg-neutral-900/70 backdrop-blur-xl top-0 border-b border-white/10 shadow-md"
             : "bg-transparent"
         )}
       >
