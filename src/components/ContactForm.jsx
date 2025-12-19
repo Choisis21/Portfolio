@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState(null); // reCAPTCHA state
 
   const [formData, setFormData] = useState({
     name: "",
@@ -20,6 +22,13 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Verify reCAPTCHA before submitting
+    if (!captchaValue) {
+      alert("Please verify that you are not a robot.");
+      return;
+    }
+
     setLoading(true);
 
     const templateParams = {
@@ -27,19 +36,31 @@ export default function ContactForm() {
       email: formData.email,
       service: formData.service,
       message: formData.message,
+      "g-recaptcha-response": captchaValue, // important for EmailJS reCAPTCHA
       time: new Date().toLocaleString(),
     };
 
+    // 1️⃣ Send notification to yourself
     emailjs
       .send(
         "service_igrlmbc",
-        "template_kjee7om",
+        "template_kjee7om", // your main notification template
         templateParams,
         "ySuudj3tO2K2Q3wSS"
       )
       .then(() => {
+        // 2️⃣ Send auto-reply to user
+        return emailjs.send(
+          "service_igrlmbc",
+          "template_rzvfwf9", // your auto-reply template
+          templateParams,
+          "ySuudj3tO2K2Q3wSS"
+        );
+      })
+      .then(() => {
         setLoading(false);
         setSubmitted(true);
+        setCaptchaValue(null); // reset captcha
 
         setFormData({
           name: "",
@@ -101,7 +122,6 @@ export default function ContactForm() {
                 }}
                 className="absolute top-1/2 left-10 h-[4px] w-50 bg-gradient-to-r from-transparent via-yellow-100 to-orange-400 rounded-full"
               >
-                {/* Star head */}
                 <div className="absolute -right-2 -top-1 w-4 h-4 bg-white rounded-full shadow-[0_0_8px_3px_rgba(255,255,255,0.8)]"></div>
               </motion.div>
 
@@ -168,21 +188,14 @@ export default function ContactForm() {
                     className="w-full rounded-md bg-background border border-border px-4 py-2.5 appearance-none"
                   >
                     <option value="">Select a service</option>
-                    <option value="Website Development">
-                      Website Development
-                    </option>
+                    <option value="Website Development">Website Development</option>
                     <option value="Search Engine Optimization (SEO)">Search Engine Optimization (SEO)</option>
                     <option value="Landing Page">Landing Page</option>
-                    <option value="E-commerce Website">
-                      E-commerce Website
-                    </option>
+                    <option value="E-commerce Website">E-commerce Website</option>
                     <option value="Website Redesign">Website Redesign</option>
-                    <option value="Maintenance & Support">
-                      Maintenance & Support
-                    </option>
+                    <option value="Maintenance & Support">Maintenance & Support</option>
                     <option value="Other">Other</option>
                   </select>
-                  {/* Custom dropdown arrow */}
                   <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
                     <svg
                       className="w-4 h-4 text-gray-400"
@@ -213,6 +226,14 @@ export default function ContactForm() {
                   onChange={handleChange}
                   required
                   className="w-full rounded-md bg-background border border-border px-4 py-2.5 resize-none"
+                />
+              </div>
+
+              {/* reCAPTCHA */}
+              <div className="my-4">
+                <ReCAPTCHA
+                  sitekey="6LfnBzEsAAAAAHazTGHVGB9ENCtD62Ril4mE5rwJ"
+                  onChange={(value) => setCaptchaValue(value)}
                 />
               </div>
 
