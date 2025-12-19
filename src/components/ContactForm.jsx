@@ -168,11 +168,10 @@ export default function ContactForm() {
                     className="w-full rounded-md bg-background border border-border px-4 py-2.5 appearance-none"
                   >
                     <option value="">Select a service</option>
-                    <option value="Website Design">Website Design</option>
                     <option value="Website Development">
                       Website Development
                     </option>
-                    <option value="UI/UX Design">UI / UX Design</option>
+                    <option value="Search Engine Optimization (SEO)">Search Engine Optimization (SEO)</option>
                     <option value="Landing Page">Landing Page</option>
                     <option value="E-commerce Website">
                       E-commerce Website
