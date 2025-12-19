@@ -88,7 +88,7 @@ const AboutSection = () => {
           <a
             href={cvFile}
             download="Chosen.pdf"
-            className="cosmic-button cursor-pointer text-md px-8"
+            className="cosmic-button cursor-pointer text-md px-5"
             >
             Download CV
           </a>
