@@ -99,10 +99,10 @@ export const Navbar = () => {
               <span className="text-white">Chosen</span>
             </a>
 
-            {/* Desktop nav */}
+            {/* Desktop nav (only lg and up) */}
             <div
               ref={containerRef}
-              className="relative hidden md:flex items-center gap-8 text-sm font-medium"
+              className="relative hidden lg:flex items-center gap-8 text-sm font-medium"
             >
               {/* 🌠 SHOOTING STAR INDICATOR */}
               <div
@@ -176,8 +176,8 @@ export const Navbar = () => {
               ))}
             </div>
 
-            {/* Desktop actions */}
-            <div className="hidden md:flex items-center gap-4">
+            {/* Desktop actions (only lg and up) */}
+            <div className="hidden lg:flex items-center gap-4">
               <a
                 href="#projects"
                 className="px-5 py-2 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition"
@@ -187,10 +187,10 @@ export const Navbar = () => {
               <ThemeToggle insideNavbar />
             </div>
 
-            {/* Mobile menu button */}
+            {/* Mobile + Tablet menu button (hidden only on lg and up) */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-white p-2"
+              className="lg:hidden text-white p-2"
             >
               {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
@@ -198,10 +198,10 @@ export const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile + Tablet menu */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center space-y-8 text-xl md:hidden transition-all",
+          "fixed inset-0 z-40 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center space-y-8 text-xl lg:hidden transition-all",
           isMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"

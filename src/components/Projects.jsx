@@ -5,8 +5,8 @@ import { FiExternalLink, FiSearch } from "react-icons/fi";
 // PORTFOLIO IMAGES
 import AnnaImg from "../assets/raven.png";
 import GuvenImg from "../assets/drpm.png";
-import ChosenImg from "../assets/chosen.png";
-import NoahImg from "../assets/chosen2.png";
+import ChosenImg from "../assets/Dark.png";
+import NoahImg from "../assets/Light.png";
 import ChukwuImg from "../assets/raven.png";
 import PatrickImg from "../assets/drpm.png";
 

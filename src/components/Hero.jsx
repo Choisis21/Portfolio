@@ -42,7 +42,7 @@ export default function Hero() {
             </blockquote>
 
              <a href="#contact">  
-              <button className="cosmic-button mt-6 inline-block text-center">
+              <button className="cosmic-button cursor-pointer mt-6 inline-block text-center">
                 Let's Talk 
               </button> 
             </a>
