@@ -1,6 +1,5 @@
 import React from "react";
 import heroImg from "../assets/Chosen.jpg";
-import cvFile from "../assets/Chosen.pdf";
 import htmlIcon from "../assets/html.svg";
 import cssIcon from "../assets/css.svg";
 import wordpressIcon from "../assets/wordpress.svg";
@@ -38,16 +37,14 @@ export default function Hero() {
           {/* Text + Quote */}
           <div className="text-left max-w-lg animate-fade-in-delay-3">
             <blockquote className="text-sm md:text-base opacity-80 border-l-4 border-primary pl-4">
-              Chosen delivers exceptional web solutions that drive real results.
+              I build fast, scalable, and conversion-focused websites for modern brands.
               Highly recommended for brands that value performance and precision.
             </blockquote>
 
-            <a
-             href={cvFile}
-             download="Chosen.pdf"
-             className="cosmic-button mt-6 inline-block text-center"
-            >
-             Download CV
+             <a href="#contact">  
+              <button className="cosmic-button mt-6 inline-block text-center">
+                Let's Talk 
+              </button> 
             </a>
           </div>
 
@@ -70,18 +67,18 @@ export default function Hero() {
           {/* Stats */}
           <div className="text-center lg:text-left space-y-4 lg:space-y-6 animate-fade-in-delay-4">
             <div>
-              <p className="text-primary text-3xl font-bold">100</p>
-              <p className="opacity-70 text-sm">Projects done</p>
+              <p className="text-primary text-3xl font-bold">10+</p>
+              <p className="opacity-70 text-sm">Projects Delivered</p>
             </div>
 
             <div>
-              <p className="text-primary text-3xl font-bold">20+</p>
+              <p className="text-primary text-3xl font-bold">5+</p>
               <p className="opacity-70 text-sm">Years of experience</p>
             </div>
 
             <div>
-              <p className="text-primary text-3xl font-bold">74</p>
-              <p className="opacity-70 text-sm">Clients served</p>
+              <p className="text-primary text-3xl font-bold">98%</p>
+              <p className="opacity-70 text-sm">Client Satisfaction</p>
             </div>
           </div>
         </div>

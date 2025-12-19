@@ -172,6 +172,15 @@
   animation-fill-mode: backwards;
 }
 
+@utility form-pill {
+  @apply w-full px-5 py-3 rounded-xl
+         bg-background border border-border
+         text-sm
+         focus:outline-none
+         focus:ring-2 focus:ring-primary/60
+         transition;
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;

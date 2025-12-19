@@ -4,6 +4,8 @@ import { Navbar } from "../components/Navbar"
 import { StarBackground } from "@/components/StarBackground"
 import ServicesSection from "../components/ServicesSection"
 import Projects from "../components/Projects"
+import ContactForm from "../components/ContactForm"
+import Footer from "../components/Footer"
 
 export const Home = () => { 
     
@@ -19,7 +21,9 @@ export const Home = () => {
         <AboutSection />
         <ServicesSection />
         <Projects />
+        <ContactForm />
 
         {/* Footer */}
+        <Footer />
     </div>
 }

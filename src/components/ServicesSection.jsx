@@ -26,9 +26,11 @@ const ServicesSection = () => {
 
           {/* ---- RIGHT: Button + Text ---- */}
           <div className="flex items-center space-x-4">
-            <button className="cosmic-button animate-fade-in-delay-2">
+            <a href="#contact">
+            <button className="cosmic-button cursor-pointer animate-fade-in-delay-2">
               Hire me
             </button>
+          </a>  
             <span className="text-sm opacity-70">------------- Let's connect</span>
           </div>
         </div>

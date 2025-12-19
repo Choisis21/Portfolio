@@ -179,10 +179,10 @@ export const Navbar = () => {
             {/* Desktop actions */}
             <div className="hidden md:flex items-center gap-4">
               <a
-                href="#contact"
+                href="#projects"
                 className="px-5 py-2 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition"
               >
-                Hire me
+                View Projects
               </a>
               <ThemeToggle insideNavbar />
             </div>
@@ -219,11 +219,11 @@ export const Navbar = () => {
         ))}
 
         <a
-          href="#contact"
+          href="#projects"
           onClick={() => setIsMenuOpen(false)}
           className="px-8 py-3 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition"
         >
-          Hire me
+          View Projects
         </a>
 
         <ThemeToggle insideNavbar onClick={() => setIsMenuOpen(false)} />

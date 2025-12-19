@@ -1,6 +1,7 @@
 import React from "react";
 import profileImg from "../assets/Chosen.jpg"; 
 import CurlyBracesIcon from "../assets/curly-braces.svg";
+import cvFile from "../assets/Chosen.pdf";
 
 const AboutSection = () => {
   return (
@@ -84,13 +85,19 @@ const AboutSection = () => {
 
           {/* Buttons Row */}
           <div className="flex items-center gap-8">
-            <button className="cosmic-button text-lg px-8">
-              Projects
-            </button>
+          <a
+            href={cvFile}
+            download="Chosen.pdf"
+            className="cosmic-button cursor-pointer text-md px-8"
+            >
+            Download CV
+          </a>
 
-            <button className="text-primary underline underline-offset-4 hover:text-primary/70 transition">
+          <a href="#contact">
+            <button className="text-primary underline cursor-pointer underline-offset-4 hover:text-primary/70 transition">
               Let’s connect →
             </button>
+          </a>
           </div>
         </div>
       </div>
