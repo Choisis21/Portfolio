@@ -6,9 +6,9 @@ import { FiExternalLink, FiSearch } from "react-icons/fi";
 import AnnaImg from "../assets/raven.png";
 import GuvenImg from "../assets/drpm.png";
 import ChosenImg from "../assets/Dark.png";
-import NoahImg from "../assets/Light.png";
-import ChukwuImg from "../assets/raven.png";
-import PatrickImg from "../assets/drpm.png";
+import NoahImg from "../assets/bridging-page.png";
+import ChukwuImg from "../assets/victorias-foundacion.png";
+import PatrickImg from "../assets/victoriascloud.png";
 
 const categories = ["All", "Code", "No Code", "Dark", "Light", "Minimalist", "Fancy"];
 
@@ -16,9 +16,9 @@ const items = [
   { name: "Anna Filou", img: AnnaImg, link: "https://corvusaurum.com/", category: "Code", type: "NGO", description: "Professional website project." },
   { name: "Güven Sözmen", img: GuvenImg, link: "https://divineroyalpriesthood.org/", category: "Dark", type: "NFT", description: "Clean minimalist portfolio." },
   { name: "Chosen Akinnola", img: ChosenImg, link: "https://chosen-akinnola.vercel.app/", category: "Dark", type: "Portfolio", description: "Dark space-themed portfolio website." },
-  { name: "Noah Buscher", img: NoahImg, link: "https://chosen-akinnola.vercel.app/", category: "Dark", type: "Portfolio", description: "High-performance coded website." },
-  { name: "Chukwuemeke Ofuzor", img: ChukwuImg, link: "https://divineroyalpriesthood.org/", category: "Light", type: "Client", description: "Bold dark interface." },
-  { name: "Patrick David", img: PatrickImg, link: "https://corvusaurum.com/", category: "Dark", type: "E-commerce", description: "Premium elegant design." },
+  { name: "Noah Buscher", img: NoahImg, category: "Dark", type: "Web Hosting", description: "High-performance coded website." },
+  { name: "Chukwuemeke Ofuzor", img: ChukwuImg, category: "Light", type: "Client", description: "Bold dark interface." },
+  { name: "Patrick David", img: PatrickImg, category: "Dark", type: "E-commerce", description: "Premium elegant design." },
 ];
 
 const Projects = () => {
