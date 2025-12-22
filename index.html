@@ -1,28 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- BASIC META -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/Tim.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chosen Akinnola</title>
 
-    <!-- ⭐ Force dark theme immediately -->
+    <title>Chosen Akinnola | Frontend Developer</title>
+    <meta
+      name="description"
+      content="Chosen Akinnola is a frontend developer building modern, high-performance web applications with React and Tailwind CSS."
+    />
+    <meta
+      name="keywords"
+      content="Chosen Akinnola, Frontend Developer, React Developer, Web Developer, Portfolio"
+    />
+    <meta name="author" content="Chosen Akinnola" />
+
+    <!-- THEME COLOR (mobile browsers) -->
+    <meta name="theme-color" content="#0f0f0f" />
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="/Tim.png" />
+
+    <!-- OPEN GRAPH (SOCIAL SHARING) -->
+    <meta property="og:title" content="Chosen Akinnola | Frontend Developer" />
+    <meta
+      property="og:description"
+      content="Frontend developer specializing in modern React applications and clean UI design."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:image" content="https://yourdomain.com/Tim.png" />
+
+    <!-- TWITTER / X -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Chosen Akinnola | Frontend Developer" />
+    <meta
+      name="twitter:description"
+      content="Building fast, modern web experiences with React & Tailwind."
+    />
+    <meta name="twitter:image" content="https://yourdomain.com/Tim.png" />
+
+    <!-- ⭐ FORCE DARK THEME IMMEDIATELY -->
     <script>
-      // Immediately run before any styles render
       (function () {
         const saved = localStorage.getItem("theme");
 
         if (saved === "light") {
           document.documentElement.classList.remove("dark");
         } else {
-          // Default to dark if first visit or savedTheme === "dark"
           document.documentElement.classList.add("dark");
           localStorage.setItem("theme", "dark");
         }
       })();
     </script>
 
-    <!-- Optional: tailwind compiled CSS link -->
+    <!-- TAILWIND COMPILED CSS -->
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
 

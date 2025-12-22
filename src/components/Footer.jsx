@@ -36,7 +36,7 @@ export default function Footer() {
         <p className="text-xs sm:text-sm opacity-80">
           © {currentYear}{" "}
           <span className="font-medium text-glow">
-            Mission Control
+            Chosen Akinnola
           </span>
           . All rights reserved.
         </p>
