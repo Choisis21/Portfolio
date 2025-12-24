@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FiExternalLink, FiSearch } from "react-icons/fi";
+import { FiExternalLink } from "react-icons/fi";
+import { Maximize2 } from "lucide-react";
 
 // PORTFOLIO IMAGES
 import CorvusImg from "../assets/raven.png";
@@ -45,21 +46,24 @@ const items = [
     img: ZumaImg,
     category: ["Light", "Code", "Web Hosting"],
     type: "Web Hosting",
-    description: "A web hosting business built with React, automating billing, accounts, emails, webhooks, and handling support tickets.",
+    description:
+      "A web hosting business built with React, automating billing, accounts, emails, webhooks, and handling support tickets.",
   },
   {
     name: "Victoria's Foundation",
     img: VFImg,
     category: ["Light", "CMS"],
     type: "NGO",
-    description: "A Netherlands-based NGO enhancing living conditions by providing skill training to empower and uplift communities.",
+    description:
+      "A Netherlands-based NGO enhancing living conditions by providing skill training to empower and uplift communities.",
   },
   {
     name: "Victoria's Cloud",
     img: VCImg,
-    category: ["Light","CMS", "Web Hosting"],
+    category: ["Light", "CMS", "Web Hosting"],
     type: "Web Hosting",
-    description: "Fast, scalable web hosting in the Netherlands, generating profits to support Victoria’s Foundation’s community programs.",
+    description:
+      "Fast, scalable web hosting in the Netherlands, generating profits to support Victoria’s Foundation’s community programs.",
   },
 ];
 
@@ -123,7 +127,6 @@ const Projects = () => {
               dark:bg-card-dark dark:text-foreground-dark dark:placeholder:text-foreground-dark/50
             "
           />
-          <FiSearch className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none text-foreground/70 dark:text-foreground-dark/70" />
         </div>
       </div>
 
@@ -139,71 +142,78 @@ const Projects = () => {
         </motion.div>
       ) : (
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {filteredItems.map((item, index) => (
-            <motion.div
-              key={index}
-              className="card card-hover overflow-hidden transition group relative"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                ease: "easeOut",
-                delay: index * 0.05,
-              }}
-              viewport={{ once: true }}
-            >
-              {/* IMAGE */}
-              <div
-                className={`relative w-full h-64 md:h-72 lg:h-80 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-t-xl ${
-                  !item.link ? "cursor-pointer" : ""
-                }`}
-                onClick={() => !item.link && setActiveImage(item)}
+          {filteredItems.map((item, index) => {
+            const showLightboxIcon = index >= filteredItems.length - 3;
+
+            return (
+              <motion.div
+                key={index}
+                className="card card-hover overflow-hidden transition group relative"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeOut",
+                  delay: index * 0.05,
+                }}
+                viewport={{ once: true }}
               >
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  className="w-full object-cover min-h-full"
-                />
-              </div>
-
-              {/* HOVER OVERLAY */}
-              <div className="absolute top-0 left-0 w-full h-64 md:h-72 lg:h-80 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white text-left z-20 pointer-events-none rounded-t-xl">
-                <h3 className="text-lg font-semibold font-heading">
-                  {item.name}
-                </h3>
-                <span className="text-xs mt-1 px-2 py-1 rounded-full bg-primary/80 inline-block">
-                  {item.type}
-                </span>
-              </div>
-
-              {/* EXTERNAL LINK */}
-              {item.link && (
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="absolute top-3 right-3 z-30 rounded-full p-2 opacity-70 hover:opacity-100 transition bg-card"
+                {/* IMAGE */}
+                <div
+                  className={`relative w-full h-64 md:h-72 lg:h-80 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-t-xl ${
+                    !item.link ? "cursor-pointer" : ""
+                  }`}
+                  onClick={() => !item.link && setActiveImage(item)}
                 >
-                  <FiExternalLink className="text-primary w-5 h-5" />
-                </a>
-              )}
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-full object-cover min-h-full"
+                  />
+                </div>
 
-              {/* DETAILS */}
-              <div className="px-3 pb-4 md:px-4 mt-2 text-foreground text-left font-body">
-                <p className="my-6">{item.description}</p>
+                {/* HOVER OVERLAY */}
+                <div className="absolute top-0 left-0 w-full h-64 md:h-72 lg:h-80 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white text-left z-20 pointer-events-none rounded-t-xl">
+                  <h3 className="text-lg font-semibold font-heading">
+                    {item.name}
+                  </h3>
+                  <span className="text-xs mt-1 px-2 py-1 rounded-full bg-primary/80 inline-block">
+                    {item.type}
+                  </span>
 
-                {/* TYPE BADGE */}
-                <span className="px-3 py-1 mr-2 rounded-full text-xs font-semibold bg-card text-foreground dark:bg-card-dark dark:text-foreground-dark">
-                  {item.type}
-                </span>
+                  {/* LIGHTBOX ICON */}
+                  {showLightboxIcon && (
+                    <Maximize2 className="absolute inset-0 m-auto w-10 h-10 text-white opacity-80 group-hover:opacity-100 pointer-events-none transition-opacity duration-300" />
+                  )}
+                </div>
 
-                {/* PRIMARY CATEGORY ONLY */}
-                <span className="px-3 py-1 rounded-full bg-primary text-xs text-primary-foreground font-semibold">
-                  {item.category[0]}
-                </span>
-              </div>
-            </motion.div>
-          ))}
+                {/* EXTERNAL LINK */}
+                {item.link && (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="absolute top-3 right-3 z-30 rounded-full p-2 opacity-70 hover:opacity-100 transition bg-card"
+                  >
+                    <FiExternalLink className="text-primary w-5 h-5" />
+                  </a>
+                )}
+
+                {/* DETAILS */}
+                <div className="px-3 pb-4 md:px-4 mt-2 text-foreground text-left font-body">
+                  <p className="my-6">{item.description}</p>
+
+                  <span className="px-3 py-1 mr-2 rounded-full text-xs font-semibold bg-card text-foreground dark:bg-card-dark dark:text-foreground-dark">
+                    {item.type}
+                  </span>
+
+                  <span className="px-3 py-1 rounded-full bg-primary text-xs text-primary-foreground font-semibold">
+                    {item.category[0]}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       )}
 
@@ -222,7 +232,6 @@ const Projects = () => {
             transition={{ duration: 0.25 }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* HEADER */}
             <div className="flex justify-between items-center px-4 py-3 border-b border-border text-left">
               <h3 className="font-heading text-lg text-foreground">
                 {activeImage.name}
@@ -235,7 +244,6 @@ const Projects = () => {
               </button>
             </div>
 
-            {/* SCROLLABLE IMAGE */}
             <div className="overflow-y-auto max-h-[80vh] scrollbar-hide">
               <img
                 src={activeImage.img}
@@ -244,7 +252,6 @@ const Projects = () => {
               />
             </div>
 
-            {/* DESCRIPTION */}
             <div className="px-4 py-4 text-left text-foreground">
               <p>{activeImage.description}</p>
             </div>
