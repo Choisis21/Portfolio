@@ -3,36 +3,36 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    role: "Web and System Support",
-    company: "Freelance",
+    role: "Web Developer",
+    company: "Zuma Host",
     period: "2025 — Present",
     description:
-      "Designing and developing high-performance, responsive websites for clients across various industries. Focused on clean UI, scalability, and performance optimization.",
-    tech: ["React", "TailwindCSS", "JavaScript", "WordPress"],
+      "I am the Senior Web Developer at Zuma Host, a web hosting company providing web hosting and professional web development services. Collaborating with other designers to implement clean UI/UX designs.",
+    tech: ["React", "TailwindCSS", "JavaScript", "Framer Motion"],
   },
   {
-    role: "Web Developer",
-    company: "Creative Agency",
-    period: "2024 — 2025",
+    role: "Web and System Support",
+    company: "Freelance",
+    period: "Sep 2025 — Oct 2025",
     description:
-      "Collaborated with designers to convert UI/UX designs into interactive web interfaces. Improved accessibility, responsiveness, and cross-browser compatibility.",
-    tech: ["HTML", "CSS", "JavaScript", "Figma"],
+      "I developed a user-friendly reseller hosting website, customized theme files for specific design needs, and integrated Clientexec with API keys and webhooks to automate client management and billing processes.",
+    tech: ["WordPress", "Clientexec", "APIs", "Webhooks"],
   },
   {
     role: "Junior Web Developer",
     company: "Bite Agency, Lagos.",
-    period: "2020 — 2021",
+    period: "2022 — 2024",
     description:
       "Assisted in building and maintaining websites, fixing bugs, and implementing new features while learning modern development workflows.",
-    tech: ["HTML", "CSS", "Python"],
+    tech: ["WordPress", "Woo-Commerce", "Elementor"],
   },
   {
     role: "Intern Web Developer",
     company: "Just Novate Technologies, Lagos.",
     period: "2020 — 2022",
     description:
-      "Assisted in building and maintaining websites, fixing bugs, and implementing new features while learning modern development workflows.",
-    tech: ["HTML", "CSS", "Python", "WordPress"],
+      "I began my web development journey using WordPress on localhost with XAMPP, then progressed to building live projects, including personal, legal, and eCommerce websites, gaining hands-on experience with real-world development workflows.",
+    tech: ["WordPress", "XAMPP", "CSS",],
   },
 ];
 
@@ -56,7 +56,9 @@ const cardVariants = {
 
 const Experience = () => {
   return (
-    <section className="relative py-24">
+    <section 
+    id="experience"
+    className="relative py-24">
       <div className="container">
         {/* Section Header */}
         <motion.div

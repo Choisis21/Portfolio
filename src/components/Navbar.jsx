@@ -1,14 +1,15 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "Home", href: "#hero", id: "hero" },
-  { name: "About me", href: "#about", id: "about" },
-  { name: "Services", href: "#services", id: "services" },
-  { name: "Projects", href: "#projects", id: "projects" },
-  { name: "Contact", href: "#contact", id: "contact" },
+  { name: "Home", href: "#hero" },
+  { name: "About me", href: "#about" },
+  { name: "Services", href: "#services" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export const Navbar = () => {
@@ -16,59 +17,12 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("Home");
 
-  const containerRef = useRef(null);
-  const indicatorRef = useRef(null);
-
-  // Scroll tracking
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-
-      let current = "Home";
-      for (const item of navItems) {
-        const el = document.getElementById(item.id);
-        if (!el) continue;
-
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.3) current = item.name;
-      }
-
-      setActive(current);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Shooting star movement
-  useEffect(() => {
-    const container = containerRef.current;
-    const indicator = indicatorRef.current;
-    if (!container || !indicator) return;
-
-    const activeLink = container.querySelector(`[data-nav="${active}"]`);
-    if (!activeLink) return;
-
-    const left = activeLink.offsetLeft;
-    const width = activeLink.offsetWidth;
-
-    // Instant “teleport” before animation
-    indicator.style.transition = "none";
-    indicator.style.left = left + "px";
-    indicator.style.width = width + "px";
-
-    // Trigger shooting star animation
-    indicator.classList.remove("shoot");
-    void indicator.offsetWidth; // Force reflow
-    indicator.classList.add("shoot");
-
-    // Smooth movement after teleport
-    requestAnimationFrame(() => {
-      indicator.style.transition = "left 0.35s ease, width 0.25s ease";
-    });
-  }, [active]);
 
   return (
     <>
@@ -80,17 +34,12 @@ export const Navbar = () => {
             : "bg-transparent"
         )}
       >
-        <div className="container flex justify-center transition-all duration-300">
+        <div className="container flex justify-center">
           <div
             className={cn(
-              `
-                w-full max-w-6xl 
-                flex items-center justify-between
-                px-6 py-3
-                transition-all duration-300
-              `,
+              "w-full max-w-6xl flex items-center justify-between px-6 py-3 transition-all duration-300",
               scrolled
-                ? "rounded-none bg-transparent border-none shadow-none px-0"
+                ? "rounded-none bg-transparent px-0"
                 : "rounded-full bg-neutral-800"
             )}
           >
@@ -99,84 +48,30 @@ export const Navbar = () => {
               <span className="text-white">Chosen</span>
             </a>
 
-            {/* Desktop nav (only lg and up) */}
-            <div
-              ref={containerRef}
-              className="relative hidden lg:flex items-center gap-8 text-sm font-medium"
-            >
-              {/* 🌠 SHOOTING STAR INDICATOR */}
-              <div
-                ref={indicatorRef}
-                className="
-                  absolute bottom-[-5px]
-                  h-[3px]
-                  bg-gradient-to-r 
-                  from-transparent 
-                  via-yellow-100 
-                  to-orange-400
-                  rounded-full
-                  opacity-100
-                  pointer-events-none
-                  overflow-visible
-                  shoot
-                "
-                style={{ left: 0, width: 0 }}
-              >
-                {/* Shooting star head */}
-                <div
-                  className="
-                    absolute
-                    top-[-3px]
-                    right-[-6px]
-                    w-[8px]
-                    h-[8px]
-                    bg-white
-                    rounded-full
-                    shadow-[0_0_8px_3px_rgba(255,255,255,0.8)]
-                    star-head
-                  "
-                ></div>
-
-                <style>
-                  {`
-                    /* Shooting star streak animation */
-                    .shoot .star-head {
-                      animation: shootTrail 0.35s ease forwards;
-                    }
-
-                    @keyframes shootTrail {
-                      0% {
-                        transform: translateX(-40px) scale(0.4);
-                        opacity: 0;
-                      }
-                      40% {
-                        opacity: 1;
-                      }
-                      100% {
-                        transform: translateX(0) scale(1);
-                        opacity: 1;
-                      }
-                    }
-                  `}
-                </style>
-              </div>
-
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex items-center gap-8 text-sm font-medium">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  data-nav={item.name}
+                  onClick={() => setActive(item.name)}
                   className={cn(
-                    "relative py-2 transition text-gray-200 hover:text-white",
-                    active === item.name ? "text-white" : ""
+                    "relative py-2 text-gray-300 hover:text-white transition",
+                    active === item.name && "text-white"
                   )}
                 >
                   {item.name}
+
+                  {active === item.name && (
+                    <span className="shooting-track">
+                      <span className="shooting-star-head" />
+                    </span>
+                  )}
                 </a>
               ))}
             </div>
 
-            {/* Desktop actions (only lg and up) */}
+            {/* Desktop Actions */}
             <div className="hidden lg:flex items-center gap-4">
               <a
                 href="#projects"
@@ -187,7 +82,7 @@ export const Navbar = () => {
               <ThemeToggle insideNavbar />
             </div>
 
-            {/* Mobile + Tablet menu button (hidden only on lg and up) */}
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden text-white p-2"
@@ -198,7 +93,7 @@ export const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile + Tablet menu */}
+      {/* Mobile Menu */}
       <div
         className={cn(
           "fixed inset-0 z-40 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center space-y-8 text-xl lg:hidden transition-all",
@@ -211,7 +106,10 @@ export const Navbar = () => {
           <a
             key={item.name}
             href={item.href}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setActive(item.name);
+              setIsMenuOpen(false);
+            }}
             className="text-white hover:text-orange-400 transition"
           >
             {item.name}
@@ -228,6 +126,56 @@ export const Navbar = () => {
 
         <ThemeToggle insideNavbar onClick={() => setIsMenuOpen(false)} />
       </div>
+
+      {/* Shooting Star Animation */}
+      <style>
+        {`
+          .shooting-track {
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(
+              to right,
+              transparent,
+              #fde68a,
+              #fb923c
+            );
+            border-radius: 999px;
+            overflow: hidden;
+          }
+
+          .shooting-star-head {
+            position: absolute;
+            top: -6px;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 16px 6px rgba(255, 255, 255, 0.95);
+            animation: shootAcross 0.6s ease-out forwards;
+          }
+
+          @keyframes shootAcross {
+            0% {
+              left: 0;
+              opacity: 0;
+              transform: scale(0.6);
+            }
+            30% {
+              opacity: 1;
+              transform: scale(1);
+            }
+            100% {
+              left: 85%; /* stop before going out of bounds */
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+        `}
+      </style>
     </>
   );
 };
