@@ -35,7 +35,7 @@ export default function Hero() {
           animate="visible"
           custom={0}
         >
-          <span className="inline-block px-4 py-1 rounded-full border text-sm">
+          <span className="inline-block px-4 py-1 rounded-full border text-sm font-[Raleway,_sans-serif]">
             Hello
           </span>
         </motion.div>
@@ -46,7 +46,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           custom={0.1}
-          className="text-3xl md:text-5xl font-bold mt-4"
+          className="text-3xl md:text-5xl font-[Exo_2,_sans-serif] font-bold mt-4"
         >
           I am <span className="text-primary">Chosen</span>
         </motion.h1>
@@ -56,7 +56,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           custom={0.2}
-          className="text-2xl md:text-4xl font-semibold mt-2 mb-6"
+          className="text-2xl md:text-4xl font-[Exo_2,_sans-serif] font-semibold mt-2 mb-6"
         >
           A Web Developer
         </motion.h2>
@@ -69,7 +69,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             custom={0.3}
-            className="text-left max-w-lg"
+            className="text-left max-w-lg font-[Raleway,_sans-serif]"
           >
             <blockquote className="text-sm md:text-base opacity-80 border-l-4 border-primary pl-4">
               I build fast, scalable, and conversion-focused websites for modern
@@ -95,33 +95,39 @@ export default function Hero() {
               src={heroImg}
               className="w-52 md:w-72 lg:w-80 object-cover rounded-full shadow-lg"
               alt="Chosen - Web Developer"
+              loading="lazy"
             />
 
-            {/* Floating skill icons (CSS float still works perfectly) */}
+            {/* Floating skill icons */}
             <img
               src={htmlIcon}
               className="w-10 absolute lg:-top-10 -top-8 lg:left-20 left-10 animate-float"
               alt="HTML Icon"
+              loading="lazy"
             />
             <img
               src={cssIcon}
               className="w-10 absolute top-10 -right-4 animate-float"
               alt="CSS Icon"
+              loading="lazy"
             />
             <img
               src={wordpressIcon}
               className="w-10 absolute -bottom-4 right-4 animate-float"
               alt="WordPress Icon"
+              loading="lazy"
             />
             <img
               src={javascriptIcon}
               className="w-10 absolute -left-4 lg:bottom-5 -bottom-5 animate-float"
               alt="JavaScript Icon"
+              loading="lazy"
             />
             <img
               src={reactIcon}
               className="w-10 absolute top-20 lg:top-24 lg:-left-14 -left-10 animate-float"
               alt="React Icon"
+              loading="lazy"
             />
           </motion.div>
 
@@ -131,7 +137,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             custom={0.5}
-            className="text-center lg:text-left space-y-4 lg:space-y-6"
+            className="text-center lg:text-left space-y-4 lg:space-y-6 font-[Raleway,_sans-serif]"
           >
             <div>
               <p className="text-primary text-3xl font-bold">10+</p>

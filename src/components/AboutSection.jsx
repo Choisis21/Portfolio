@@ -48,8 +48,7 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="w-full py-16 lg:py-36 -my-3.5 text-[#141414]"
-      style={{ backgroundColor: "#F8F3EB" }}
+      className="w-full py-16 lg:py-36 -my-3.5 bg-background text-foreground transition-colors"
     >
       <div className="container flex flex-col-reverse md:flex-row items-center gap-12">
         {/* ------------------------------
@@ -65,11 +64,13 @@ const AboutSection = () => {
           {/* Circular background */}
           <div className="absolute w-64 h-64 md:w-80 md:h-80 rounded-full bg-primary/20 -z-10 animate-float" />
 
-          {/* Profile Image */}
+          {/* Profile Image (Lazy Loaded) */}
           <img
             src={profileImg}
-            alt="Developer portrait"
-            className="w-60 md:w-72 lg:w-80 object-cover rounded-xl shadow-xl"
+            alt="Portrait of Chosen Akinnola"
+            loading="lazy"
+            decoding="async"
+            className="w-60 md:w-72 lg:w-80 object-cover rounded-xl shadow-xl bg-card"
           />
 
           {/* Lightning icon */}
@@ -78,11 +79,13 @@ const AboutSection = () => {
           </span>
 
           {/* Curly braces */}
-          <span className="absolute bottom-3 -left-4 sm:bottom-4 sm:left-4 md:-bottom-10 md:-left-8 lg:bottom-6 lg:left-8 font-bold">
+          <span className="absolute bottom-3 -left-4 sm:bottom-4 sm:left-4 md:-bottom-10 md:-left-8 lg:bottom-6 lg:left-8">
             <img
               src={CurlyBracesIcon}
-              alt="curly braces"
-              className="w-12 h-12 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-20 lg:h-20 object-contain rotate-20 animate-float"
+              alt="decorative curly braces"
+              loading="lazy"
+              decoding="async"
+              className="w-12 h-12 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-20 lg:h-20 object-contain rotate-20 animate-float opacity-80"
             />
           </span>
 
@@ -107,39 +110,55 @@ const AboutSection = () => {
           viewport={{ once: true }}
           className="w-full md:w-1/2 text-left"
         >
+          {/* Section label */}
           <motion.p
             variants={fadeUp}
-            className="uppercase tracking-widest text-sm mb-2"
+            className="font-[Exo_2,_sans-serif] uppercase tracking-widest text-sm mb-2 text-primary"
           >
             About
           </motion.p>
 
+          {/* Heading */}
           <motion.h2
             variants={fadeUp}
-            className="text-3xl md:text-4xl font-extrabold mb-6"
+            className="font-[Exo_2,_sans-serif] text-3xl md:text-4xl font-extrabold mb-6"
           >
             ABOUT ME
           </motion.h2>
 
-          <motion.p variants={fadeUp} className="leading-relaxed text-base md:text-lg mb-4">
-            I am a passionate Web Developer who loves turning ideas into
+          {/* Body text */}
+          <motion.p
+            variants={fadeUp}
+            className="font-[Raleway,_sans-serif] leading-relaxed text-base md:text-lg mb-4 text-foreground/90"
+          >
+            I am a passionate Front-End Web Developer who loves turning ideas into
             interactive digital experiences. I focus on creating clean,
             responsive, and user-friendly websites that not only look good but
             also perform smoothly across all devices.
           </motion.p>
 
-          <motion.p variants={fadeUp} className="leading-relaxed text-base md:text-lg mb-4">
+          <motion.p
+            variants={fadeUp}
+            className="font-[Raleway,_sans-serif] leading-relaxed text-base md:text-lg mb-4 text-foreground/90"
+          >
             With a strong eye for design and detail, I enjoy blending creativity
             and functionality to build websites that leave a lasting impression.
             I work with modern technologies like{" "}
-            <span className="font-semibold">
-              HTML, CSS, JavaScript, React, and Node.js
+            <span className="font-[Exo_2,_sans-serif] font-semibold text-primary">
+              HTML, CSS, JavaScript, React, Node.js
+            </span>{" "}
+            and CMS platforms such as{" "}
+            <span className="font-[Exo_2,_sans-serif] font-semibold text-primary">
+              WordPress and Shopify
             </span>
             , and I am always learning new tools to stay ahead in the
             ever-evolving tech space.
           </motion.p>
 
-          <motion.p variants={fadeUp} className="leading-relaxed text-base md:text-lg mb-8">
+          <motion.p
+            variants={fadeUp}
+            className="font-[Raleway,_sans-serif] leading-relaxed text-base md:text-lg mb-8 text-foreground/90"
+          >
             When I am not coding, I am exploring design trends, improving my UI/UX
             skills, or brainstorming ways to make the web more intuitive and
             engaging.
@@ -150,13 +169,13 @@ const AboutSection = () => {
             <a
               href={cvFile}
               download="Chosen.pdf"
-              className="cosmic-button cursor-pointer text-md px-5"
+              className="cosmic-button font-[Exo_2,_sans-serif] cursor-pointer text-md px-5"
             >
               Download CV
             </a>
 
             <a href="#contact">
-              <button className="text-primary underline cursor-pointer underline-offset-4 hover:text-primary/70 transition">
+              <button className="font-[Exo_2,_sans-serif] text-primary underline cursor-pointer underline-offset-4 hover:text-primary/70 transition">
                 Let’s connect →
               </button>
             </a>

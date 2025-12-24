@@ -3,58 +3,114 @@ import { motion } from "framer-motion";
 import { FiExternalLink, FiSearch } from "react-icons/fi";
 
 // PORTFOLIO IMAGES
-import AnnaImg from "../assets/raven.png";
-import GuvenImg from "../assets/drpm.png";
+import CorvusImg from "../assets/raven.png";
+import DRPMImg from "../assets/drpm.png";
 import ChosenImg from "../assets/Dark.png";
-import NoahImg from "../assets/bridging-page.png";
-import ChukwuImg from "../assets/victorias-foundacion.png";
-import PatrickImg from "../assets/victoriascloud.png";
+import ZumaImg from "../assets/zuma.png";
+import VFImg from "../assets/victorias-foundacion.png";
+import VCImg from "../assets/victoriascloud.png";
 
-const categories = ["All", "Code", "No Code", "Dark", "Light", "Minimalist", "Fancy"];
+const categories = ["All", "Code", "CMS", "Dark", "Light", "Web Hosting"];
 
 const items = [
-  { name: "Anna Filou", img: AnnaImg, link: "https://corvusaurum.com/", category: "Code", type: "NGO", description: "Professional website project." },
-  { name: "Güven Sözmen", img: GuvenImg, link: "https://divineroyalpriesthood.org/", category: "Dark", type: "NFT", description: "Clean minimalist portfolio." },
-  { name: "Chosen Akinnola", img: ChosenImg, link: "https://chosen-akinnola.vercel.app/", category: "Dark", type: "Portfolio", description: "Dark space-themed portfolio website." },
-  { name: "Noah Buscher", img: NoahImg, category: "Dark", type: "Web Hosting", description: "High-performance coded website." },
-  { name: "Chukwuemeke Ofuzor", img: ChukwuImg, category: "Light", type: "Client", description: "Bold dark interface." },
-  { name: "Patrick David", img: PatrickImg, category: "Dark", type: "E-commerce", description: "Premium elegant design." },
+  {
+    name: "Corvus Aurum",
+    img: CorvusImg,
+    link: "https://corvusaurum.com/",
+    category: ["CMS", "Dark"],
+    type: "NFT",
+    description:
+      "A gold-backed NFT platform with OpenSea listings and MetaMask integration, developed as a subsidiary of a premium ring business.",
+  },
+  {
+    name: "Divine Royal Priesthood Ministry",
+    img: DRPMImg,
+    link: "https://divineroyalpriesthood.org/",
+    category: ["CMS", "Light"],
+    type: "NGO",
+    description:
+      "A Christian NGO restoring hope through skills training, food aid, and financial support for the elderly and widowed.",
+  },
+  {
+    name: "Chosen Akinnola",
+    img: ChosenImg,
+    link: "https://chosen-akinnola.vercel.app/",
+    category: ["Dark", "Light", "Code"],
+    type: "Portfolio",
+    description:
+      "A modern space-themed website built with React, Tailwind CSS, and supporting libraries including Framer Motion and Lucide.",
+  },
+  {
+    name: "Zuma Host",
+    img: ZumaImg,
+    category: ["Light", "Code", "Web Hosting"],
+    type: "Web Hosting",
+    description: "A web hosting business built with React, automating billing, accounts, emails, webhooks, and handling support tickets.",
+  },
+  {
+    name: "Victoria's Foundation",
+    img: VFImg,
+    category: ["Light", "CMS"],
+    type: "NGO",
+    description: "A Netherlands-based NGO enhancing living conditions by providing skill training to empower and uplift communities.",
+  },
+  {
+    name: "Victoria's Cloud",
+    img: VCImg,
+    category: ["Light","CMS", "Web Hosting"],
+    type: "Web Hosting",
+    description: "Fast, scalable web hosting in the Netherlands, generating profits to support Victoria’s Foundation’s community programs.",
+  },
 ];
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeImage, setActiveImage] = useState(null);
 
-  const filteredItems = items.filter(item => {
-    const matchesCategory = selectedCategory === "All" || item.category === selectedCategory;
-    const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
+  const filteredItems = items.filter((item) => {
+    const matchesCategory =
+      selectedCategory === "All" || item.category.includes(selectedCategory);
+
+    const matchesSearch = item.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
     return matchesCategory && matchesSearch;
   });
 
   return (
-    <section className="w-full px-4 md:px-10 lg:px-20 py-10 lg:py-40" id="projects">
-      <h2 className="text-left text-3xl font-bold mb-8 text-foreground">Projects</h2>
+    <section
+      className="w-full px-4 md:px-10 lg:px-20 py-10 lg:py-40 font-body"
+      id="projects"
+    >
+      <h2 className="text-left text-3xl font-bold mb-8 text-foreground font-heading">
+        Projects
+      </h2>
 
       <style>{`
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
       `}</style>
 
+      {/* FILTERS */}
       <div className="w-full flex flex-col sm:flex-row flex-wrap justify-between sm:items-center gap-4 mb-10">
-        {/* CATEGORY FILTERS */}
         <div className="flex flex-wrap gap-4 text-base font-semibold justify-center sm:justify-start w-full sm:w-auto">
-          {categories.map((c, i) => (
+          {categories.map((c) => (
             <button
-              key={i}
+              key={c}
               onClick={() => setSelectedCategory(c)}
-              className={`cursor-pointer transition ${selectedCategory === c ? "text-primary" : "hover:text-primary/70"}`}
+              className={`cursor-pointer transition ${
+                selectedCategory === c
+                  ? "text-primary"
+                  : "hover:text-primary/70"
+              }`}
             >
               {c}
             </button>
           ))}
         </div>
 
-        {/* SEARCH INPUT */}
         <div className="relative w-full sm:w-60 md:w-64">
           <input
             type="text"
@@ -67,16 +123,11 @@ const Projects = () => {
               dark:bg-card-dark dark:text-foreground-dark dark:placeholder:text-foreground-dark/50
             "
           />
-          <FiSearch
-            className="
-              absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none
-              text-foreground/70 dark:text-foreground-dark/70
-            "
-          />
+          <FiSearch className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none text-foreground/70 dark:text-foreground-dark/70" />
         </div>
       </div>
 
-      {/* PROJECT CARDS */}
+      {/* CARDS */}
       {filteredItems.length === 0 ? (
         <motion.div
           initial={{ opacity: 0 }}
@@ -94,11 +145,20 @@ const Projects = () => {
               className="card card-hover overflow-hidden transition group relative"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                delay: index * 0.05,
+              }}
               viewport={{ once: true }}
             >
               {/* IMAGE */}
-              <div className="relative w-full h-64 md:h-72 lg:h-80 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-t-xl">
+              <div
+                className={`relative w-full h-64 md:h-72 lg:h-80 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-t-xl ${
+                  !item.link ? "cursor-pointer" : ""
+                }`}
+                onClick={() => !item.link && setActiveImage(item)}
+              >
                 <img
                   src={item.img}
                   alt={item.name}
@@ -108,44 +168,88 @@ const Projects = () => {
 
               {/* HOVER OVERLAY */}
               <div className="absolute top-0 left-0 w-full h-64 md:h-72 lg:h-80 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white text-left z-20 pointer-events-none rounded-t-xl">
-                <h3 className="text-lg font-semibold">{item.name}</h3>
-                <span className="text-xs mt-1 px-2 py-1 rounded-full bg-primary/80 inline-block">{item.type}</span>
+                <h3 className="text-lg font-semibold font-heading">
+                  {item.name}
+                </h3>
+                <span className="text-xs mt-1 px-2 py-1 rounded-full bg-primary/80 inline-block">
+                  {item.type}
+                </span>
               </div>
 
               {/* EXTERNAL LINK */}
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noreferrer"
-                className="absolute top-3 right-3 z-30 rounded-full p-2 opacity-70 hover:opacity-100 transition bg-card"
-              >
-                <FiExternalLink className="text-primary w-5 h-5" />
-              </a>
+              {item.link && (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="absolute top-3 right-3 z-30 rounded-full p-2 opacity-70 hover:opacity-100 transition bg-card"
+                >
+                  <FiExternalLink className="text-primary w-5 h-5" />
+                </a>
+              )}
 
               {/* DETAILS */}
-              <div className="px-3 pb-4 md:px-4 mt-2 text-foreground text-left">
+              <div className="px-3 pb-4 md:px-4 mt-2 text-foreground text-left font-body">
                 <p className="my-6">{item.description}</p>
 
-                {/* ITEM TYPE BADGE with theme-aware colors */}
-                <span
-                  className="
-                    px-3 py-1 mr-2 rounded-full text-xs font-semibold
-                    bg-card text-foreground
-                    dark:bg-card-dark dark:text-foreground-dark
-                    transition-colors duration-300
-                  "
-                >
+                {/* TYPE BADGE */}
+                <span className="px-3 py-1 mr-2 rounded-full text-xs font-semibold bg-card text-foreground dark:bg-card-dark dark:text-foreground-dark">
                   {item.type}
                 </span>
 
-                {/* CATEGORY BADGE */}
+                {/* PRIMARY CATEGORY ONLY */}
                 <span className="px-3 py-1 rounded-full bg-primary text-xs text-primary-foreground font-semibold">
-                  {item.category}
+                  {item.category[0]}
                 </span>
               </div>
             </motion.div>
           ))}
         </div>
+      )}
+
+      {/* IMAGE POPUP */}
+      {activeImage && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={() => setActiveImage(null)}
+        >
+          <motion.div
+            className="relative max-w-5xl w-full max-h-[90vh] bg-card dark:bg-card-dark rounded-xl overflow-hidden"
+            initial={{ scale: 0.95 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.25 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* HEADER */}
+            <div className="flex justify-between items-center px-4 py-3 border-b border-border text-left">
+              <h3 className="font-heading text-lg text-foreground">
+                {activeImage.name}
+              </h3>
+              <button
+                onClick={() => setActiveImage(null)}
+                className="text-foreground/70 hover:text-primary text-xl"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* SCROLLABLE IMAGE */}
+            <div className="overflow-y-auto max-h-[80vh] scrollbar-hide">
+              <img
+                src={activeImage.img}
+                alt={activeImage.name}
+                className="w-full object-contain"
+              />
+            </div>
+
+            {/* DESCRIPTION */}
+            <div className="px-4 py-4 text-left text-foreground">
+              <p>{activeImage.description}</p>
+            </div>
+          </motion.div>
+        </motion.div>
       )}
     </section>
   );

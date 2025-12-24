@@ -6,7 +6,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [captchaValue, setCaptchaValue] = useState(null); // reCAPTCHA state
+  const [captchaValue, setCaptchaValue] = useState(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -23,7 +23,6 @@ export default function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Verify reCAPTCHA before submitting
     if (!captchaValue) {
       alert("Please verify that you are not a robot.");
       return;
@@ -36,39 +35,30 @@ export default function ContactForm() {
       email: formData.email,
       service: formData.service,
       message: formData.message,
-      "g-recaptcha-response": captchaValue, // important for EmailJS reCAPTCHA
+      "g-recaptcha-response": captchaValue,
       time: new Date().toLocaleString(),
     };
 
-    // 1️⃣ Send notification to yourself
     emailjs
       .send(
         "service_igrlmbc",
-        "template_kjee7om", // your main notification template
+        "template_kjee7om",
         templateParams,
         "ySuudj3tO2K2Q3wSS"
       )
-      .then(() => {
-        // 2️⃣ Send auto-reply to user
-        return emailjs.send(
+      .then(() =>
+        emailjs.send(
           "service_igrlmbc",
-          "template_rzvfwf9", // your auto-reply template
+          "template_rzvfwf9",
           templateParams,
           "ySuudj3tO2K2Q3wSS"
-        );
-      })
+        )
+      )
       .then(() => {
         setLoading(false);
         setSubmitted(true);
-        setCaptchaValue(null); // reset captcha
-
-        setFormData({
-          name: "",
-          email: "",
-          service: "",
-          message: "",
-        });
-
+        setCaptchaValue(null);
+        setFormData({ name: "", email: "", service: "", message: "" });
         setTimeout(() => setSubmitted(false), 4000);
       })
       .catch((error) => {
@@ -100,16 +90,17 @@ export default function ContactForm() {
           whileInView="visible"
           viewport={{ once: true }}
         >
+          {/* HEADER */}
           <header className="text-center mb-6 sm:mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-glow mb-2">
+            <h2 className="font-[Exo_2,_sans-serif] text-2xl sm:text-3xl font-bold text-glow mb-2">
               Contact Mission Control
             </h2>
-            <p className="text-sm sm:text-base opacity-80">
+            <p className="font-[Raleway,_sans-serif] text-sm sm:text-base opacity-80">
               Send a signal across the stars ✨
             </p>
           </header>
 
-          {/* 🌠 SHOOTING STAR PRELOADER */}
+          {/* LOADING */}
           {loading ? (
             <div className="relative h-32 overflow-hidden flex items-center">
               <motion.div
@@ -122,31 +113,33 @@ export default function ContactForm() {
                 }}
                 className="absolute top-1/2 left-10 h-[4px] w-50 bg-gradient-to-r from-transparent via-yellow-100 to-orange-400 rounded-full"
               >
-                <div className="absolute -right-2 -top-1 w-4 h-4 bg-white rounded-full shadow-[0_0_8px_3px_rgba(255,255,255,0.8)]"></div>
+                <div className="absolute -right-2 -top-1 w-4 h-4 bg-white rounded-full shadow-[0_0_8px_3px_rgba(255,255,255,0.8)]" />
               </motion.div>
 
-              <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-sm opacity-80">
+              <p className="font-[Exo_2,_sans-serif] absolute bottom-0 left-1/2 -translate-x-1/2 text-sm opacity-80">
                 Launching transmission…
               </p>
             </div>
           ) : submitted ? (
-            /* 🛰️ SUCCESS MESSAGE */
+            /* SUCCESS */
             <motion.div
               className="flex flex-col items-center text-center py-10 space-y-4"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
             >
               <div className="text-6xl animate-pulse-subtle">🛰️</div>
-              <p className="text-lg font-medium">Transmission Received</p>
-              <p className="text-sm opacity-80 max-w-xs">
+              <p className="font-[Exo_2,_sans-serif] text-lg font-medium">
+                Transmission Received
+              </p>
+              <p className="font-[Raleway,_sans-serif] text-sm opacity-80 max-w-xs">
                 Mission Control has received your message and will respond soon.
               </p>
             </motion.div>
           ) : (
-            /* ✨ FORM */
+            /* FORM */
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <div>
-                <label className="block text-sm text-left font-medium mb-2">
+                <label className="font-[Raleway,_sans-serif] block text-sm text-left font-medium mb-2">
                   Your Name
                 </label>
                 <input
@@ -156,12 +149,12 @@ export default function ContactForm() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-md bg-background border border-border px-4 py-2.5"
+                  className="font-[Raleway,_sans-serif] w-full rounded-md bg-background border border-border px-4 py-2.5"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-left font-medium mb-2">
+                <label className="font-[Raleway,_sans-serif] block text-sm text-left font-medium mb-2">
                   Email Address
                 </label>
                 <input
@@ -171,12 +164,12 @@ export default function ContactForm() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-md bg-background border border-border px-4 py-2.5"
+                  className="font-[Raleway,_sans-serif] w-full rounded-md bg-background border border-border px-4 py-2.5"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-left font-medium mb-2">
+                <label className="font-[Raleway,_sans-serif] block text-sm text-left font-medium mb-2">
                   Service Required
                 </label>
                 <div className="relative w-full">
@@ -185,37 +178,39 @@ export default function ContactForm() {
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-md bg-background border border-border px-4 py-2.5 appearance-none"
+                    className="font-[Raleway,_sans-serif] w-full rounded-md bg-background border border-border px-4 py-2.5 appearance-none"
                   >
                     <option value="">Select a service</option>
                     <option value="Website Development">Website Development</option>
-                    <option value="Search Engine Optimization (SEO)">Search Engine Optimization (SEO)</option>
+                    <option value="Search Engine Optimization (SEO)">
+                      Search Engine Optimization (SEO)
+                    </option>
                     <option value="Landing Page">Landing Page</option>
                     <option value="E-commerce Website">E-commerce Website</option>
                     <option value="Website Redesign">Website Redesign</option>
-                    <option value="Maintenance & Support">Maintenance & Support</option>
+                    <option value="Maintenance & Support">
+                      Maintenance & Support
+                    </option>
                     <option value="Other">Other</option>
                   </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-                    <svg
-                      className="w-4 h-4 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </div>
+                  {/* Down Arrow Icon */}
+                <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                  <svg
+                   className="w-4 h-4 text-gray-500"
+                   fill="none"
+                   stroke="currentColor"
+                   strokeWidth="2"
+                   viewBox="0 0 24 24"
+                   xmlns="http://www.w3.org/2000/svg"
+                  >
+                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                 </div>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm text-left font-medium mb-2">
+                <label className="font-[Raleway,_sans-serif] block text-sm text-left font-medium mb-2">
                   Message
                 </label>
                 <textarea
@@ -225,19 +220,22 @@ export default function ContactForm() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-md bg-background border border-border px-4 py-2.5 resize-none"
+                  className="font-[Raleway,_sans-serif] w-full rounded-md bg-background border border-border px-4 py-2.5 resize-none"
                 />
               </div>
 
-              {/* reCAPTCHA */}
-              <div className="my-4">
+              {/* CAPTCHA */}
+              <div className="my-4 flex justify-center">
                 <ReCAPTCHA
                   sitekey="6LfnBzEsAAAAAHazTGHVGB9ENCtD62Ril4mE5rwJ"
                   onChange={(value) => setCaptchaValue(value)}
                 />
               </div>
 
-              <button type="submit" className="cosmic-button w-full">
+              <button
+                type="submit"
+                className="cosmic-button font-[Exo_2,_sans-serif] w-full"
+              >
                 Launch Message 🚀
               </button>
             </form>

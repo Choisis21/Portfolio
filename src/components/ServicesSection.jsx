@@ -104,7 +104,7 @@ const ServicesSection = () => {
                 Web Development
               </h3>
               <p className="text-sm opacity-75">
-                Building fast, responsive, and scalable websites using modern tech and best practices.
+                Building high-performance, responsive websites designed to attract users, increase conversions, and generate measurable business results.
               </p>
             </motion.div>
 
@@ -134,7 +134,7 @@ const ServicesSection = () => {
                 Website Maintenance
               </h3>
               <p className="text-sm opacity-75">
-                Keeping your website secure, updated, and running smoothly.
+                I'll handle updates, security, and performance so your website stays fast, safe, and dependable at all times.
               </p>
             </motion.div>
 
@@ -150,7 +150,7 @@ const ServicesSection = () => {
                 DNS Management
               </h3>
               <p className="text-sm opacity-75">
-                Managing DNS records, domain routing, and secure connectivity.
+                Handling domain routing and DNS configuration to ensure fast, secure, and uninterrupted access to your website.
               </p>
             </motion.div>
           </motion.div>
@@ -195,7 +195,10 @@ const ServicesSection = () => {
           className="flex flex-col items-center mt-10 md:hidden space-y-3"
           variants={fadeOnly}
         >
-          <button className="cosmic-button w-48">Hire me</button>
+          <button className="cosmic-button w-48">
+          <a href="#contact">
+            Hire me</a>
+          </button>
           <span className="text-sm opacity-70">
             ------------- Let's connect
           </span>

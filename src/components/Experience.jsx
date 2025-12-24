@@ -66,10 +66,10 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="font-[Exo_2,_sans-serif] text-3xl md:text-4xl font-bold mb-4">
             Work <span className="text-primary">Experience</span>
           </h2>
-          <p className="max-w-xl mx-auto text-foreground/80">
+          <p className="font-[Raleway,_sans-serif] max-w-xl mx-auto text-foreground/80">
             A timeline of my professional journey, highlighting the roles and
             experiences that shaped my skills.
           </p>
@@ -113,19 +113,19 @@ const Experience = () => {
                       viewport={{ once: true, margin: "-80px" }}
                       className="card card-hover p-6 text-left"
                     >
-                      <span className="text-sm text-primary font-medium">
+                      <span className="font-heading text-sm text-primary font-medium">
                         {exp.period}
                       </span>
 
-                      <h3 className="mt-2 text-xl font-semibold">
+                      <h3 className="font-heading mt-2 text-xl font-semibold">
                         {exp.role}
                       </h3>
 
-                      <p className="text-sm text-foreground/70 mb-4">
+                      <p className="font-[Raleway,_sans-serif] text-sm text-foreground/70 mb-4">
                         {exp.company}
                       </p>
 
-                      <p className="text-sm text-foreground/80 mb-4">
+                      <p className="font-[Raleway,_sans-serif] text-sm text-foreground/80 mb-4">
                         {exp.description}
                       </p>
 
@@ -133,8 +133,7 @@ const Experience = () => {
                         {exp.tech.map((tech, i) => (
                           <span
                             key={i}
-                            className="px-3 py-1 text-xs rounded-full
-                                       bg-primary/10 text-primary"
+                            className="font-[Raleway,_sans-serif] px-3 py-1 text-xs rounded-full bg-primary/10 text-primary"
                           >
                             {tech}
                           </span>
