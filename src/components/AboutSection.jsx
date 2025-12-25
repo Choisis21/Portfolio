@@ -113,7 +113,7 @@ const AboutSection = () => {
           {/* Section label */}
           <motion.p
             variants={fadeUp}
-            className="font-[Exo_2,_sans-serif] uppercase tracking-widest text-sm mb-2 text-primary"
+            className="uppercase tracking-widest text-sm mb-2 text-primary"
           >
             About
           </motion.p>
@@ -121,7 +121,7 @@ const AboutSection = () => {
           {/* Heading */}
           <motion.h2
             variants={fadeUp}
-            className="font-[Exo_2,_sans-serif] text-3xl md:text-4xl font-extrabold mb-6"
+            className="text-3xl md:text-4xl font-extrabold mb-6"
           >
             ABOUT ME
           </motion.h2>
@@ -129,7 +129,7 @@ const AboutSection = () => {
           {/* Body text */}
           <motion.p
             variants={fadeUp}
-            className="font-[Raleway,_sans-serif] leading-relaxed text-base md:text-lg mb-4 text-foreground/90"
+            className="leading-relaxed text-base md:text-lg mb-4 text-foreground/90"
           >
             I am a passionate Front-End Web Developer who loves turning ideas into
             interactive digital experiences. I focus on creating clean,
@@ -139,16 +139,16 @@ const AboutSection = () => {
 
           <motion.p
             variants={fadeUp}
-            className="font-[Raleway,_sans-serif] leading-relaxed text-base md:text-lg mb-4 text-foreground/90"
+            className="leading-relaxed text-base md:text-lg mb-4 text-foreground/90"
           >
             With a strong eye for design and detail, I enjoy blending creativity
             and functionality to build websites that leave a lasting impression.
             I work with modern technologies like{" "}
-            <span className="font-[Exo_2,_sans-serif] font-semibold text-primary">
+            <span className="font-semibold text-primary">
               HTML, CSS, JavaScript, React, Node.js
             </span>{" "}
             and CMS platforms such as{" "}
-            <span className="font-[Exo_2,_sans-serif] font-semibold text-primary">
+            <span className="font-semibold text-primary">
               WordPress and Shopify
             </span>
             , and I am always learning new tools to stay ahead in the
@@ -157,7 +157,7 @@ const AboutSection = () => {
 
           <motion.p
             variants={fadeUp}
-            className="font-[Raleway,_sans-serif] leading-relaxed text-base md:text-lg mb-8 text-foreground/90"
+            className="leading-relaxed text-base md:text-lg mb-8 text-foreground/90"
           >
             When I am not coding, I am exploring design trends, improving my UI/UX
             skills, or brainstorming ways to make the web more intuitive and
@@ -169,13 +169,13 @@ const AboutSection = () => {
             <a
               href={cvFile}
               download="Chosen.pdf"
-              className="cosmic-button font-[Exo_2,_sans-serif] cursor-pointer text-md px-5"
+              className="cosmic-button cursor-pointer text-md px-5"
             >
               Download CV
             </a>
 
             <a href="#contact">
-              <button className="font-[Exo_2,_sans-serif] text-primary underline cursor-pointer underline-offset-4 hover:text-primary/70 transition">
+              <button className="text-primary underline cursor-pointer underline-offset-4 hover:text-primary/70 transition">
                 Let’s connect →
               </button>
             </a>

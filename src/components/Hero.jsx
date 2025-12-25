@@ -35,7 +35,7 @@ export default function Hero() {
           animate="visible"
           custom={0}
         >
-          <span className="inline-block px-4 py-1 rounded-full border text-sm font-[Raleway,_sans-serif]">
+          <span className="inline-block px-4 py-1 rounded-full border text-sm">
             Hello
           </span>
         </motion.div>
@@ -46,7 +46,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           custom={0.1}
-          className="text-3xl md:text-5xl font-[Exo_2,_sans-serif] font-bold mt-4"
+          className="text-3xl md:text-5xl font-bold mt-4 "
         >
           I am <span className="text-primary">Chosen</span>
         </motion.h1>
@@ -69,7 +69,8 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             custom={0.3}
-            className="text-left max-w-lg font-[Raleway,_sans-serif]"
+            className="text-left max-w-lg"
+
           >
             <blockquote className="text-sm md:text-base opacity-80 border-l-4 border-primary pl-4">
               I build fast, scalable, and conversion-focused websites for modern
@@ -137,7 +138,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             custom={0.5}
-            className="text-center lg:text-left space-y-4 lg:space-y-6 font-[Raleway,_sans-serif]"
+            className="text-center lg:text-left space-y-4 lg:space-y-6"
           >
             <div>
               <p className="text-primary text-3xl font-bold">10+</p>

@@ -35,14 +35,14 @@ export default function Footer() {
         {/* Brand / Copyright */}
         <p className="font-body text-xs sm:text-sm opacity-80">
           © {currentYear}{" "}
-          <span className="font-[Exo_2,_sans-serif] font-medium text-glow">
+          <span className="font-medium text-glow">
             Chosen Akinnola
           </span>
           . All rights reserved.
         </p>
 
         {/* Optional tagline */}
-        <p className="font-[Raleway,_sans-serif] mt-1 text-[11px] sm:text-xs opacity-60">
+        <p className="mt-1 text-[11px] sm:text-xs opacity-60">
           Built with ❤️ among the stars
         </p>
       </div>

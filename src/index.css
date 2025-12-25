@@ -1,9 +1,27 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Raleway:wght@400;500;700&display=swap");
-
 /* ------------------------------
    THEME TOKENS + ANIMATIONS
 --------------------------------*/
+/* Font variables */
+:root {
+  --font-heading: "Orbitron", sans-serif;
+  --font-body: "Lato", sans-serif;
+}
+
+/* Default body font */
+body {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
 @theme {
   --color-border: hsl(var(--border));
   --color-background: hsl(var(--background));

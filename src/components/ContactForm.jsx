@@ -92,10 +92,10 @@ export default function ContactForm() {
         >
           {/* HEADER */}
           <header className="text-center mb-6 sm:mb-8">
-            <h2 className="font-[Exo_2,_sans-serif] text-2xl sm:text-3xl font-bold text-glow mb-2">
+            <h2 className="text-2xl sm:text-3xl font-bold text-glow mb-2">
               Contact Mission Control
             </h2>
-            <p className="font-[Raleway,_sans-serif] text-sm sm:text-base opacity-80">
+            <p className="text-sm sm:text-base opacity-80">
               Send a signal across the stars ✨
             </p>
           </header>
@@ -116,7 +116,7 @@ export default function ContactForm() {
                 <div className="absolute -right-2 -top-1 w-4 h-4 bg-white rounded-full shadow-[0_0_8px_3px_rgba(255,255,255,0.8)]" />
               </motion.div>
 
-              <p className="font-[Exo_2,_sans-serif] absolute bottom-0 left-1/2 -translate-x-1/2 text-sm opacity-80">
+              <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-sm opacity-80">
                 Launching transmission…
               </p>
             </div>
@@ -128,10 +128,10 @@ export default function ContactForm() {
               animate={{ opacity: 1, scale: 1 }}
             >
               <div className="text-6xl animate-pulse-subtle">🛰️</div>
-              <p className="font-[Exo_2,_sans-serif] text-lg font-medium">
+              <p className="text-lg font-medium">
                 Transmission Received
               </p>
-              <p className="font-[Raleway,_sans-serif] text-sm opacity-80 max-w-xs">
+              <p className="text-sm opacity-80 max-w-xs">
                 Mission Control has received your message and will respond soon.
               </p>
             </motion.div>
@@ -139,7 +139,7 @@ export default function ContactForm() {
             /* FORM */
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <div>
-                <label className="font-[Raleway,_sans-serif] block text-sm text-left font-medium mb-2">
+                <label className="block text-sm text-left font-medium mb-2">
                   Your Name
                 </label>
                 <input
@@ -149,12 +149,12 @@ export default function ContactForm() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="font-[Raleway,_sans-serif] w-full rounded-md bg-background border border-border px-4 py-2.5"
+                  className="w-full rounded-md bg-background border border-border px-4 py-2.5"
                 />
               </div>
 
               <div>
-                <label className="font-[Raleway,_sans-serif] block text-sm text-left font-medium mb-2">
+                <label className="block text-sm text-left font-medium mb-2">
                   Email Address
                 </label>
                 <input
@@ -164,12 +164,12 @@ export default function ContactForm() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="font-[Raleway,_sans-serif] w-full rounded-md bg-background border border-border px-4 py-2.5"
+                  className="w-full rounded-md bg-background border border-border px-4 py-2.5"
                 />
               </div>
 
               <div>
-                <label className="font-[Raleway,_sans-serif] block text-sm text-left font-medium mb-2">
+                <label className="block text-sm text-left font-medium mb-2">
                   Service Required
                 </label>
                 <div className="relative w-full">
@@ -178,7 +178,7 @@ export default function ContactForm() {
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="font-[Raleway,_sans-serif] w-full rounded-md bg-background border border-border px-4 py-2.5 appearance-none"
+                    className="w-full rounded-md bg-background border border-border px-4 py-2.5 appearance-none"
                   >
                     <option value="">Select a service</option>
                     <option value="Website Development">Website Development</option>
@@ -210,7 +210,7 @@ export default function ContactForm() {
               </div>
 
               <div>
-                <label className="font-[Raleway,_sans-serif] block text-sm text-left font-medium mb-2">
+                <label className="block text-sm text-left font-medium mb-2">
                   Message
                 </label>
                 <textarea
@@ -220,7 +220,7 @@ export default function ContactForm() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="font-[Raleway,_sans-serif] w-full rounded-md bg-background border border-border px-4 py-2.5 resize-none"
+                  className="w-full rounded-md bg-background border border-border px-4 py-2.5 resize-none"
                 />
               </div>
 
@@ -234,7 +234,7 @@ export default function ContactForm() {
 
               <button
                 type="submit"
-                className="cosmic-button font-[Exo_2,_sans-serif] w-full"
+                className="cosmic-button w-full"
               >
                 Launch Message 🚀
               </button>
