@@ -145,7 +145,7 @@ const AboutSection = () => {
             and functionality to build websites that leave a lasting impression.
             I work with modern technologies like{" "}
             <span className="font-semibold text-primary">
-              HTML, CSS, JavaScript, React, Node.js
+              HTML, CSS, JavaScript, React, Next.js
             </span>{" "}
             and CMS platforms such as{" "}
             <span className="font-semibold text-primary">

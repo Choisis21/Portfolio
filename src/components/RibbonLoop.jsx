@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const ribbonItems = ["HTML5","Wordpress", "CSS", "JavaScript", "TypeScript", "Python", "React"];
+const ribbonItems = ["HTML5", "Wordpress", "CSS", "JavaScript", "Tailwind", "React", "SEO", "Next.js"];
 
 export default function RibbonLoop({ type = "dark" }) {
   const scrollRef = useRef(null);

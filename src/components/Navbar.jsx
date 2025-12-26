@@ -96,8 +96,7 @@ export const Navbar = () => {
           >
             {/* Logo */}
             <a href="#hero" className="flex items-center gap-2 text-xl font-bold">
-              <span className="text-orange-500 font-extrabold">{`{Dev}`}</span>
-              <span className="text-white">Chosen</span>
+              <span className="text-orange-500 font-extrabold">{`{ Chosen }`}</span>
             </a>
 
             {/* Desktop Nav */}

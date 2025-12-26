@@ -159,18 +159,33 @@ const Projects = () => {
                 viewport={{ once: true }}
               >
                 {/* IMAGE */}
-                <div
-                  className={`relative w-full h-64 md:h-72 lg:h-80 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-t-xl ${
-                    !item.link ? "cursor-pointer" : ""
-                  }`}
-                  onClick={() => !item.link && setActiveImage(item)}
-                >
+                {item.link && index < 3 ? (
+                <a
+                   href={item.link}
+                   target="_blank"
+                   rel="noreferrer"
+                   className="relative block w-full h-64 md:h-72 lg:h-80 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-t-xl"
+                   >
                   <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-full object-cover min-h-full"
-                  />
-                </div>
+                   src={item.img}
+                   alt={item.name}
+                   className="w-full object-cover min-h-full"
+                   />
+                 </a>
+                ) : (
+                <div
+                 className={`relative w-full h-64 md:h-72 lg:h-80 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-t-xl ${
+                 !item.link ? "cursor-pointer" : ""
+               }`}
+                onClick={() => !item.link && setActiveImage(item)}
+                >
+                <img
+                 src={item.img}
+                 alt={item.name}
+                 className="w-full object-cover min-h-full"
+                />
+            </div>
+              )}
 
                 {/* HOVER OVERLAY */}
                 <div className="absolute top-0 left-0 w-full h-64 md:h-72 lg:h-80 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white text-left z-20 pointer-events-none rounded-t-xl">
@@ -204,9 +219,8 @@ const Projects = () => {
                   <p className="my-6">{item.description}</p>
 
                   <span className="type-badge mr-2">
-  {item.type}
-</span>
-
+                   {item.type}
+                    </span>
 
                   <span className="px-3 py-1 rounded-full bg-primary text-xs text-primary-foreground font-semibold">
                     {item.category[0]}
