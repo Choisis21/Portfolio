@@ -206,3 +206,18 @@ h6 {
   padding: 0;
   text-align: center;
 }
+
+/* Type badge for cards */
+.type-badge {
+  background-color: #2d2d2d90; /* dark gray for light mode */
+  color: #fff; /* white text */
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px; /* fully rounded */
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.dark .type-badge {
+  background-color: hsl(var(--card)); /* dark mode background */
+  color: hsl(var(--foreground-dark)); /* dark mode text */
+}

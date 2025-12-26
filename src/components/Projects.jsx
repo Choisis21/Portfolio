@@ -203,9 +203,10 @@ const Projects = () => {
                 <div className="px-3 pb-4 md:px-4 mt-2 text-foreground text-left font-body">
                   <p className="my-6">{item.description}</p>
 
-                  <span className="px-3 py-1 mr-2 rounded-full text-xs font-semibold bg-card text-foreground dark:bg-card-dark dark:text-foreground-dark">
-                    {item.type}
-                  </span>
+                  <span className="type-badge mr-2">
+  {item.type}
+</span>
+
 
                   <span className="px-3 py-1 rounded-full bg-primary text-xs text-primary-foreground font-semibold">
                     {item.category[0]}

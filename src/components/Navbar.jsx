@@ -1,28 +1,79 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About me", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "#hero", id: "hero" },
+  { name: "About me", href: "#about", id: "about" },
+  { name: "Services", href: "#services", id: "services" },
+  { name: "Experience", href: "#experience", id: "experience" },
+  { name: "Projects", href: "#projects", id: "projects" },
+  { name: "Contact", href: "#contact", id: "contact" },
 ];
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("Home");
+  const [active, setActive] = useState("hero");
 
+  const isProgrammaticScroll = useRef(false);
+  const scrollTimeout = useRef(null);
+
+  // Navbar background on scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Update active menu on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isProgrammaticScroll.current) return;
+
+      const midpoint = window.scrollY + window.innerHeight / 2;
+
+      for (const item of navItems) {
+        const section = document.getElementById(item.id);
+        if (!section) continue;
+
+        const { offsetTop, offsetHeight } = section;
+        if (midpoint >= offsetTop && midpoint < offsetTop + offsetHeight) {
+          setActive(item.id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Disable body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+  }, [isMenuOpen]);
+
+  // Handle menu item click
+  const handleNavClick = (item) => {
+    const section = document.getElementById(item.id);
+    if (section) {
+      isProgrammaticScroll.current = true;
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActive(item.id);
+
+      clearTimeout(scrollTimeout.current);
+      scrollTimeout.current = setTimeout(() => {
+        isProgrammaticScroll.current = false;
+      }, 700); // match scroll duration
+    }
+
+    setIsMenuOpen(false); // close mobile menu
+  };
 
   return (
     <>
@@ -43,6 +94,7 @@ export const Navbar = () => {
                 : "rounded-full bg-neutral-800"
             )}
           >
+            {/* Logo */}
             <a href="#hero" className="flex items-center gap-2 text-xl font-bold">
               <span className="text-orange-500 font-extrabold">{`{Dev}`}</span>
               <span className="text-white">Chosen</span>
@@ -50,25 +102,30 @@ export const Navbar = () => {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-8 text-sm font-medium">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setActive(item.name)}
-                  className={cn(
-                    "relative py-2 text-gray-300 hover:text-white transition",
-                    active === item.name && "text-white"
-                  )}
-                >
-                  {item.name}
-
-                  {active === item.name && (
-                    <span className="shooting-track">
-                      <span className="shooting-star-head" />
-                    </span>
-                  )}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                const isActive = active === item.id;
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item);
+                    }}
+                    className={cn(
+                      "relative py-2 text-gray-300 hover:text-white transition",
+                      isActive && "text-white"
+                    )}
+                  >
+                    {item.name}
+                    {isActive && (
+                      <span className="shooting-track">
+                        <span className="shooting-star-head" />
+                      </span>
+                    )}
+                  </a>
+                );
+              })}
             </div>
 
             {/* Desktop Actions */}
@@ -91,43 +148,46 @@ export const Navbar = () => {
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={cn(
+            "fixed inset-0 z-40 bg-black/80 backdrop-blur-md flex flex-col items-center pt-24 space-y-6 text-xl lg:hidden transition-all duration-300",
+            isMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          )}
+        >
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick(item);
+              }}
+              className={cn(
+                "text-white hover:text-orange-400 transition",
+                active === item.id && "text-orange-400"
+              )}
+            >
+              {item.name}
+            </a>
+          ))}
+
+          <a
+            href="#projects"
+            onClick={() => setIsMenuOpen(false)}
+            className="px-8 py-3 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition"
+          >
+            View Projects
+          </a>
+
+          <ThemeToggle insideNavbar onClick={() => setIsMenuOpen(false)} />
+        </div>
       </nav>
 
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "fixed inset-0 z-40 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center space-y-8 text-xl lg:hidden transition-all",
-          isMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        )}
-      >
-        {navItems.map((item) => (
-          <a
-            key={item.name}
-            href={item.href}
-            onClick={() => {
-              setActive(item.name);
-              setIsMenuOpen(false);
-            }}
-            className="text-white hover:text-orange-400 transition"
-          >
-            {item.name}
-          </a>
-        ))}
-
-        <a
-          href="#projects"
-          onClick={() => setIsMenuOpen(false)}
-          className="px-8 py-3 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition"
-        >
-          View Projects
-        </a>
-
-        <ThemeToggle insideNavbar onClick={() => setIsMenuOpen(false)} />
-      </div>
-
-      {/* Shooting Star Animation */}
+      {/* Shooting Star Styles */}
       <style>
         {`
           .shooting-track {
@@ -136,12 +196,7 @@ export const Navbar = () => {
             bottom: -8px;
             width: 100%;
             height: 4px;
-            background: linear-gradient(
-              to right,
-              transparent,
-              #fde68a,
-              #fb923c
-            );
+            background: linear-gradient(to right, transparent, #fde68a, #fb923c);
             border-radius: 999px;
             overflow: hidden;
           }
@@ -159,20 +214,9 @@ export const Navbar = () => {
           }
 
           @keyframes shootAcross {
-            0% {
-              left: 0;
-              opacity: 0;
-              transform: scale(0.6);
-            }
-            30% {
-              opacity: 1;
-              transform: scale(1);
-            }
-            100% {
-              left: 85%; /* stop before going out of bounds */
-              opacity: 1;
-              transform: scale(1);
-            }
+            0% { left: 0; opacity: 0; transform: scale(0.6); }
+            30% { opacity: 1; transform: scale(1); }
+            100% { left: 85%; opacity: 1; transform: scale(1); }
           }
         `}
       </style>
