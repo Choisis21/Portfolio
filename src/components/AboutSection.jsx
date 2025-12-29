@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import { CodeXml,Braces } from "lucide-react";
 import profileImg from "../assets/Chosen.jpg";
-import CurlyBracesIcon from "../assets/curly-braces.svg";
 import cvFile from "../assets/Chosen.pdf";
 
 /* ------------------------------
@@ -73,21 +72,16 @@ const AboutSection = () => {
             className="w-60 md:w-72 lg:w-80 object-cover rounded-xl shadow-xl bg-card"
           />
 
-          {/* Lightning icon */}
-          <span className="absolute top-4 -right-5 lg:right-20 text-primary text-3xl rotate-20 animate-float font-bold">
-            ⚡
-          </span>
+         {/* Code XML icon */}
+        <span className="absolute top-4 -right-5 lg:right-20 text-primary rotate-20 animate-float">
+          <CodeXml className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14" strokeWidth={2.5}/>
+        </span>
 
-          {/* Curly braces */}
-          <span className="absolute bottom-3 -left-4 sm:bottom-4 sm:left-4 md:-bottom-10 md:-left-8 lg:bottom-6 lg:left-8">
-            <img
-              src={CurlyBracesIcon}
-              alt="decorative curly braces"
-              loading="lazy"
-              decoding="async"
-              className="w-12 h-12 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-20 lg:h-20 object-contain rotate-20 animate-float opacity-80"
-            />
-          </span>
+
+         <span className="absolute bottom-3 -left-4 sm:bottom-4 sm:left-4 md:-bottom-10 md:-left-8 lg:bottom-6 lg:left-8 text-primary rotate-20 animate-float opacity-80">
+           <Braces className="w-12 h-12 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-20 lg:h-20" strokeWidth={2.5} />
+        </span>
+
 
           {/* Dotted pattern */}
           <div className="absolute md:-left-13 -left-8 top-10 grid grid-cols-4 gap-2 opacity-40">

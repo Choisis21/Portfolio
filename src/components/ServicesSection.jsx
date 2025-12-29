@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Wrench, Globe } from "lucide-react";
-import Anglebracket from "../assets/angle-brackets.svg";
+import { Wrench, Globe, ChevronsLeftRight } from "lucide-react";
 import Curly from "../assets/curly.svg";
 import serviceImg from "../assets/Chosen.jpg";
 
@@ -172,12 +171,9 @@ const ServicesSection = () => {
               viewport={{ once: true }}
             />
 
-            <span className="absolute bottom-3 -left-4 sm:bottom-4 sm:left-4 md:-bottom-10 md:-left-8 lg:bottom-6 lg:left-8">
-              <img
-                src={Anglebracket}
-                alt="angle brackets"
-                className="w-12 h-12 md:w-14 md:h-14 lg:w-20 lg:h-20 animate-float"
-              />
+           {/* Angle brackets */}
+            <span className="absolute bottom-3 -left-4 sm:bottom-4 sm:left-4 md:-bottom-10 md:-left-8 lg:bottom-6 lg:left-8 text-primary -rotate-10 animate-float">
+              <ChevronsLeftRight className="w-12 h-12 md:w-14 md:h-14 lg:w-20 lg:h-20" strokeWidth={2.5}/>
             </span>
 
             <span className="absolute right-2 sm:right-8 top-8">
