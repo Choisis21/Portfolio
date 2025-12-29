@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { CodeXml,Braces } from "lucide-react";
-import profileImg from "../assets/Chosen.jpg";
+import profileImg from "../assets/Olu.jpg";
 import cvFile from "../assets/Chosen.pdf";
 
 /* ------------------------------
@@ -47,7 +47,7 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="w-full py-16 lg:py-36 -my-3.5 bg-background text-foreground transition-colors"
+      className="w-full py-16 lg:py-36 -my-3.5 bg-background text-foreground transition-colors z-10"
     >
       <div className="container flex flex-col-reverse md:flex-row items-center gap-12">
         {/* ------------------------------
@@ -69,7 +69,7 @@ const AboutSection = () => {
             alt="Portrait of Chosen Akinnola"
             loading="lazy"
             decoding="async"
-            className="w-60 md:w-72 lg:w-80 object-cover rounded-xl shadow-xl bg-card"
+            className="w-60 h-53 lg:h-100 md:w-72 lg:w-80 object-cover rounded-xl shadow-xl bg-card"
           />
 
          {/* Code XML icon */}
@@ -102,7 +102,7 @@ const AboutSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="w-full md:w-1/2 text-left"
+          className="w-full md:w-1/2 z-10 text-left"
         >
           {/* Section label */}
           <motion.p

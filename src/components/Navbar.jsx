@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X } from "lucide-react";
+import { TextAlignEnd, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -20,15 +20,18 @@ export const Navbar = () => {
   const isProgrammaticScroll = useRef(false);
   const scrollTimeout = useRef(null);
 
-  // Navbar background on scroll
+  // Track scroll (disabled while menu is open)
   useEffect(() => {
+    if (isMenuOpen) return;
+
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  // Update active menu on scroll
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isMenuOpen]);
+
+  // Active section tracking
   useEffect(() => {
     const handleScroll = () => {
       if (isProgrammaticScroll.current) return;
@@ -53,14 +56,14 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Disable body scroll when mobile menu is open
+  // Disable body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
   }, [isMenuOpen]);
 
-  // Handle menu item click
   const handleNavClick = (item) => {
     const section = document.getElementById(item.id);
+
     if (section) {
       isProgrammaticScroll.current = true;
       section.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -69,40 +72,45 @@ export const Navbar = () => {
       clearTimeout(scrollTimeout.current);
       scrollTimeout.current = setTimeout(() => {
         isProgrammaticScroll.current = false;
-      }, 700); // match scroll duration
+      }, 700);
     }
 
-    setIsMenuOpen(false); // close mobile menu
+    setIsMenuOpen(false);
   };
 
   return (
     <>
       <nav
         className={cn(
-          "w-full fixed top-3 z-50 transition-all duration-300",
-          scrolled
-            ? "bg-neutral-900/70 backdrop-blur-xl top-0 border-b border-white/10 shadow-md"
-            : "bg-transparent"
+          "w-full fixed z-50 transition-all duration-300 ease-out",
+          isMenuOpen
+            ? "translate-y-0 bg-transparent"
+            : scrolled
+            ? "bg-neutral-900/70 backdrop-blur-xl border-b border-white/10 shadow-md translate-y-0"
+            : "bg-transparent translate-y-3"
         )}
       >
         <div className="container flex justify-center">
           <div
             className={cn(
               "w-full max-w-6xl flex items-center justify-between px-6 py-3 transition-all duration-300",
-              scrolled
+              !isMenuOpen && scrolled
                 ? "rounded-none bg-transparent px-0"
                 : "rounded-full bg-neutral-800"
             )}
           >
             {/* Logo */}
-            <a href="#hero" className="flex items-center gap-2 text-xl font-bold">
-              <span className="text-orange-500 font-extrabold">{`{ Chosen }`}</span>
+            <a href="#hero" className="text-xl font-bold">
+              <span className="text-orange-500 font-extrabold">
+                {`{ Chosen }`}
+              </span>
             </a>
 
             {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-8 text-sm font-medium">
+            <div className="hidden lg:flex gap-8 text-sm font-medium">
               {navItems.map((item) => {
                 const isActive = active === item.id;
+
                 return (
                   <a
                     key={item.name}
@@ -131,19 +139,19 @@ export const Navbar = () => {
             <div className="hidden lg:flex items-center gap-4">
               <a
                 href="#projects"
-                className="px-5 py-2 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition"
+                className="px-5 py-2 rounded-full bg-white text-black font-medium"
               >
                 View Projects
               </a>
               <ThemeToggle insideNavbar />
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden text-white p-2"
             >
-              {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+              {isMenuOpen ? <X size={26} /> : <TextAlignEnd size={26} />}
             </button>
           </div>
         </div>
@@ -151,12 +159,19 @@ export const Navbar = () => {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "fixed inset-0 z-40 bg-black/80 backdrop-blur-md flex flex-col items-center pt-24 space-y-6 text-xl lg:hidden transition-all duration-300",
+            "fixed inset-0 top-0 h-screen overflow-hidden z-40 bg-black/80 backdrop-blur-md flex flex-col items-center pt-8 space-y-6 text-xl lg:hidden transition-all duration-300",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           )}
         >
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="self-end mr-6 text-white p-2"
+          >
+            <X size={26} />
+          </button>
+
           {navItems.map((item) => (
             <a
               key={item.name}
@@ -177,7 +192,7 @@ export const Navbar = () => {
           <a
             href="#projects"
             onClick={() => setIsMenuOpen(false)}
-            className="px-8 py-3 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition"
+            className="px-8 py-3 rounded-full bg-white text-black font-medium"
           >
             View Projects
           </a>
