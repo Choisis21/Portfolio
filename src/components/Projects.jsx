@@ -30,7 +30,7 @@ const items = [
     category: ["Code", "Light"],
     type: "Law Firm",
     description:
-      "A demo website for an award winning law firm in Nigeria. Built with React, Tailwind CSS, React router, Framer Motion and Calendry .",
+      "A demo website for an award winning law firm in Nigeria. Built with React, Tailwind CSS, React router, Framer Motion and Calendly .",
   },
   {
     name: "Chosen Akinnola",
