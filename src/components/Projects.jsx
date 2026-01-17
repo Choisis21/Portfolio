@@ -5,7 +5,7 @@ import { Maximize2 } from "lucide-react";
 
 // PORTFOLIO IMAGES
 import CorvusImg from "../assets/raven.png";
-import DRPMImg from "../assets/drpm.png";
+import AGImg from "../assets/A&G.png";
 import ChosenImg from "../assets/Dark.png";
 import ZumaImg from "../assets/zuma.png";
 import VFImg from "../assets/victorias-foundacion.png";
@@ -25,12 +25,12 @@ const items = [
   },
   {
     name: "Divine Royal Priesthood Ministry",
-    img: DRPMImg,
-    link: "https://divineroyalpriesthood.org/",
-    category: ["CMS", "Light"],
-    type: "NGO",
+    img: AGImg,
+    link: "https://adegbalawfirm.vercel.app/",
+    category: ["Code", "Light"],
+    type: "Law Firm",
     description:
-      "A Christian NGO restoring hope through skills training, food aid, and financial support for the elderly and widowed.",
+      "A demo website for an award winning law firm in Nigeria.",
   },
   {
     name: "Chosen Akinnola",
