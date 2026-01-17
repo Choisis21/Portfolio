@@ -24,13 +24,13 @@ const items = [
       "A gold-backed NFT platform with OpenSea listings and MetaMask integration, developed as a subsidiary of a premium ring business.",
   },
   {
-    name: "Divine Royal Priesthood Ministry",
+    name: "A & G Law Firm",
     img: AGImg,
     link: "https://adegbalawfirm.vercel.app/",
     category: ["Code", "Light"],
     type: "Law Firm",
     description:
-      "A demo website for an award winning law firm in Nigeria.",
+      "A demo website for an award winning law firm in Nigeria. Built with React, Tailwind CSS, React router, Framer Motion and Calendry .",
   },
   {
     name: "Chosen Akinnola",
