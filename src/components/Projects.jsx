@@ -44,6 +44,7 @@ const items = [
   {
     name: "Zuma Host",
     img: ZumaImg,
+    link: "https://zumahost.org/",
     category: ["Light", "Code", "Web Hosting"],
     type: "Web Hosting",
     description:
@@ -52,6 +53,7 @@ const items = [
   {
     name: "Victoria's Foundation",
     img: VFImg,
+    link: "https://www.victoriasfundacion.nl/",
     category: ["Light", "CMS"],
     type: "NGO",
     description:
@@ -143,7 +145,7 @@ const Projects = () => {
       ) : (
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {filteredItems.map((item, index) => {
-            const showLightboxIcon = index >= filteredItems.length - 3;
+            const showLightboxIcon = index === 5;
 
             return (
               <motion.div
@@ -159,7 +161,7 @@ const Projects = () => {
                 viewport={{ once: true }}
               >
                 {/* IMAGE */}
-                {item.link && index < 3 ? (
+                {item.link && index < 5 ? (
                 <a
                    href={item.link}
                    target="_blank"
