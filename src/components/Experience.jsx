@@ -433,7 +433,7 @@ const GitHubContributionGraph = ({ username = "Choisis21", token }) => {
 };
 
 const Experience = () => {
-  const GITHUB_TOKEN = "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";
+  const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
   return (
     <section 
