@@ -92,8 +92,8 @@ const Tooltip = ({ day, isVisible }) => {
       className="absolute z-[99999] lg:z-[9999] px-3 py-2 text-xs bg-[#6e7681] text-white rounded-md whitespace-nowrap pointer-events-none shadow-lg"
       style={{ 
         bottom: 'calc(100% + 8px)',
-        left: '0',
-        transform: 'translateX(0)',
+        left: '50',
+        transform: 'translateX(-50)',
       }}
     >
       <div className="font-semibold">{day.count} {contributionText} on {formattedDate}</div>
@@ -268,7 +268,7 @@ const GitHubContributionGraph = ({ username = "Choisis21", token }) => {
   return (
     <div className="flex flex-col lg:flex-row lg:items-start justify-center gap-8">
       {/* Main Graph Container - centered */}
-      <div className="bg-[#0d1117] rounded-lg border border-[#30363d] overflow-hidden">
+      <div className="bg-[#0d1117] rounded-lg border border-[#30363d] overflow-visible">
         {/* Header Bar */}
         <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-[#30363d]">
           <div className="flex items-center gap-2">
@@ -311,7 +311,7 @@ const GitHubContributionGraph = ({ username = "Choisis21", token }) => {
   </div>
 
           {/* Graph Container - no scrollbar on desktop, increased padding top on mobile */}
-          <div className="overflow-x-auto lg:overflow-visible pb-2 pt-4 lg:pt-0 scrollbar-thin scrollbar-thumb-[#30363d] scrollbar-track-transparent">
+          <div className="overflow-x-auto overflow-y-visible lg:overflow-visible pb-2 pt-4 lg:pt-0 scrollbar-thin scrollbar-thumb-[#30363d] scrollbar-track-transparent">
             <div className="min-w-max lg:min-w-0">
               {/* Month Labels */}
               <div className="flex text-xs text-[#8b949e] mb-1 ml-[30px]">
