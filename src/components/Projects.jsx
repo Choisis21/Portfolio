@@ -10,10 +10,20 @@ import ChosenImg from "../assets/Dark.png";
 import ZumaImg from "../assets/zuma.png";
 import VFImg from "../assets/victorias-foundacion.png";
 import VCImg from "../assets/victoriascloud.png";
+import ABImg from "../assets/ab.webp";
 
 const categories = ["All", "Code", "CMS", "Dark", "Light", "Web Hosting"];
 
 const items = [
+  {
+    name: "AfriBudget",
+    img: ABImg,
+    link: "https://afribudget.zumahost.org/",
+    category: ["Code", "Dark"],
+    type: "Web App",
+    description:
+      "A simple budgeting platform that allows users to track expenses, avoid impulse spending, manage money, and achieve financial goals.",
+  },
   {
     name: "Corvus Aurum",
     img: CorvusImg,
