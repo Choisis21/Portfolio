@@ -10,7 +10,7 @@ import ChosenImg from "../assets/Dark.png";
 import ZumaImg from "../assets/zuma.png";
 import VFImg from "../assets/victorias-foundacion.png";
 import VCImg from "../assets/victoriascloud.png";
-import ABImg from "../assets/ab.webp";
+import ABImg from "../assets/AB.webp";
 
 const categories = ["All", "Code", "CMS", "Dark", "Light", "Web Hosting"];
 
