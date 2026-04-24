@@ -171,7 +171,7 @@ const Projects = () => {
                 viewport={{ once: true }}
               >
                 {/* IMAGE */}
-                {item.link && index < 5 ? (
+                {item.link && index < 6 ? (
                 <a
                    href={item.link}
                    target="_blank"
