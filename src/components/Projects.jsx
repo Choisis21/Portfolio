@@ -11,8 +11,9 @@ import ZumaImg from "../assets/zuma.png";
 import VFImg from "../assets/victorias-foundacion.png";
 import VCImg from "../assets/victoriascloud.png";
 import ABImg from "../assets/AB.webp";
+import FIFIImg from "../assets/fifilondon.png";
 
-const categories = ["All", "Code", "CMS", "Dark", "Light", "Web Hosting"];
+const categories = ["All", "Code", "CMS", "Dark", "E-commerce", "Light", "Web Hosting"];
 
 const items = [
   {
@@ -25,13 +26,13 @@ const items = [
       "A simple budgeting platform that allows users to track expenses, avoid impulse spending, manage money, and achieve financial goals.",
   },
   {
-    name: "Corvus Aurum",
-    img: CorvusImg,
-    link: "https://corvusaurum.com/",
-    category: ["CMS", "Dark"],
-    type: "NFT",
+    name: "FifiLondon",
+    img: FIFIImg,
+    link: "https://fifilondon.co/",
+    category: ["CMS", "Light", "E-commerce"],
+    type: "E-commerce",
     description:
-      "A gold-backed NFT platform with OpenSea listings and MetaMask integration, developed as a subsidiary of a premium ring business.",
+      "A modern women's fashion store created to to match each season, new arrivals, shopping options, and customer support information.",
   },
   {
     name: "A & G Law Firm",
@@ -68,6 +69,14 @@ const items = [
     type: "NGO",
     description:
       "A Netherlands-based NGO enhancing living conditions by providing skill training to empower and uplift communities.",
+  },
+  {
+    name: "Corvus Aurum",
+    img: CorvusImg,
+    category: ["CMS", "Dark"],
+    type: "NFT",
+    description:
+      "A gold-backed NFT platform with OpenSea listings and MetaMask integration, developed as a subsidiary of a premium ring business.",
   },
   {
     name: "Victoria's Cloud",
@@ -171,7 +180,7 @@ const Projects = () => {
                 viewport={{ once: true }}
               >
                 {/* IMAGE */}
-                {item.link && index < 6 ? (
+                {item.link ? (
                 <a
                    href={item.link}
                    target="_blank"
