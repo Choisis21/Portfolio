@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
+import MailImg from "../assets/mail.webp";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -77,6 +78,8 @@ export default function ContactForm() {
     },
   };
 
+  const isBusy = loading || submitted;
+
   return (
     <section
       id="contact"
@@ -84,161 +87,254 @@ export default function ContactForm() {
     >
       <div className="container px-4">
         <motion.div
-          className="card card-hover mx-auto max-w-lg sm:max-w-xl p-6 sm:p-8 md:p-10"
+          className="card mx-auto max-w-5xl overflow-hidden"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* HEADER */}
-          <header className="text-center mb-6 sm:mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-glow mb-2">
-              Contact Mission Control
-            </h2>
-            <p className="text-sm sm:text-base opacity-80">
-              Send a signal across the stars ✨
-            </p>
-          </header>
+          {isBusy ? (
+            /* ---------- FULL-WIDTH STATUS PANEL ---------- */
+            <div className="relative flex min-h-[28rem] flex-col items-center justify-center gap-6 overflow-hidden bg-primary/5 p-8 text-center sm:p-12">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl"
+              />
 
-          {/* LOADING */}
-          {loading ? (
-            <div className="relative h-32 overflow-hidden flex items-center">
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: "100%" }}
-                transition={{
-                  duration: 1.2,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                }}
-                className="absolute top-1/2 left-10 h-[4px] w-50 bg-gradient-to-r from-transparent via-yellow-100 to-orange-400 rounded-full"
-              >
-                <div className="absolute -right-2 -top-1 w-4 h-4 bg-white rounded-full shadow-[0_0_8px_3px_rgba(255,255,255,0.8)]" />
-              </motion.div>
+              {loading ? (
+                <>
+                  <motion.img
+                    src={MailImg}
+                    alt=""
+                    aria-hidden="true"
+                    className="relative w-28 drop-shadow-xl sm:w-36"
+                    animate={{ y: [0, -14, 0] }}
+                    transition={{
+                      duration: 2.2,
+                      ease: "easeInOut",
+                      repeat: Infinity,
+                    }}
+                  />
 
-              <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-sm opacity-80">
-                Launching transmission…
-              </p>
+                  {/* comet streak */}
+                  <div className="relative h-14 w-full max-w-md overflow-hidden">
+                    <motion.div
+                      initial={{ x: "-130%" }}
+                      animate={{ x: "130%" }}
+                      transition={{
+                        duration: 1.4,
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                      }}
+                      className="absolute top-1/2 left-0 h-[5px] w-40 rounded-full bg-gradient-to-r from-transparent via-yellow-100 to-orange-400"
+                    >
+                      <div className="absolute -right-2.5 -top-[7px] h-5 w-5 rounded-full bg-white shadow-[0_0_14px_5px_rgba(255,255,255,0.8)]" />
+                    </motion.div>
+                  </div>
+
+                  <div className="relative space-y-2">
+                    <p className="text-xl font-semibold sm:text-2xl">
+                      Launching transmission&#8230;
+                    </p>
+                    <p className="text-sm opacity-70">
+                      Hold tight while your message clears the atmosphere.
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <motion.div
+                  className="relative flex flex-col items-center gap-4"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                >
+                  <div className="animate-pulse-subtle text-7xl sm:text-8xl">
+                    &#128752;
+                  </div>
+                  <h2 className="text-glow text-2xl font-bold sm:text-3xl">
+                    Transmission Received
+                  </h2>
+                  <p className="max-w-md text-sm opacity-80 sm:text-base">
+                    Mission Control has received your message and will respond
+                    soon.
+                  </p>
+                </motion.div>
+              )}
             </div>
-          ) : submitted ? (
-            /* SUCCESS */
-            <motion.div
-              className="flex flex-col items-center text-center py-10 space-y-4"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-            >
-              <div className="text-6xl animate-pulse-subtle">🛰️</div>
-              <p className="text-lg font-medium">
-                Transmission Received
-              </p>
-              <p className="text-sm opacity-80 max-w-xs">
-                Mission Control has received your message and will respond soon.
-              </p>
-            </motion.div>
           ) : (
-            /* FORM */
-            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
-              <div>
-                <label className="block text-sm text-left font-medium mb-2">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Captain Jane"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-md bg-background border border-border px-4 py-2.5"
+            /* ---------- TWO-COLUMN FORM LAYOUT ---------- */
+            <div className="grid lg:grid-cols-2">
+              {/* LEFT: ILLUSTRATION PANEL */}
+              <aside className="relative flex flex-col items-center justify-center gap-6 overflow-hidden border-b border-border bg-primary/10 p-8 text-center sm:p-10 lg:border-b-0 lg:border-r">
+                {/* soft glow */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl"
                 />
-              </div>
 
-              <div>
-                <label className="block text-sm text-left font-medium mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="captainjane@gmail.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-md bg-background border border-border px-4 py-2.5"
+                <motion.img
+                  src={MailImg}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="relative w-40 drop-shadow-xl sm:w-48 lg:w-56"
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{
+                    duration: 5,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                  }}
                 />
-              </div>
 
-              <div>
-                <label className="block text-sm text-left font-medium mb-2">
-                  Service Required
-                </label>
-                <div className="relative w-full">
-                  <select
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-md bg-background border border-border px-4 py-2.5 appearance-none"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="Website Development">Website Development</option>
-                    <option value="Search Engine Optimization (SEO)">
-                      Search Engine Optimization (SEO)
-                    </option>
-                    <option value="Landing Page">Landing Page</option>
-                    <option value="E-commerce Website">E-commerce Website</option>
-                    <option value="Website Redesign">Website Redesign</option>
-                    <option value="Maintenance & Support">
-                      Maintenance & Support
-                    </option>
-                    <option value="Other">Other</option>
-                  </select>
-                  {/* Down Arrow Icon */}
-                <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-                  <svg
-                   className="w-4 h-4 text-gray-500"
-                   fill="none"
-                   stroke="currentColor"
-                   strokeWidth="2"
-                   viewBox="0 0 24 24"
-                   xmlns="http://www.w3.org/2000/svg"
-                  >
-                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                 </div>
+                <div className="relative">
+                  <h2 className="text-glow mb-2 text-2xl font-bold sm:text-3xl">
+                    Contact Mission Control
+                  </h2>
+                  <p className="text-sm opacity-80 sm:text-base">
+                    Send a signal across the stars &#10024;
+                  </p>
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-sm text-left font-medium mb-2">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  placeholder="Your Transmission..."
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-md bg-background border border-border px-4 py-2.5 resize-none"
-                />
-              </div>
+                <ul className="relative space-y-2 text-sm opacity-80">
+                  <li>Websites, landing pages &amp; e-commerce</li>
+                  <li>SEO/AEO and performance tuning</li>
+                  <li>Redesigns, maintenance &amp; support</li>
+                </ul>
+              </aside>
 
-              {/* CAPTCHA */}
-              <div className="my-4 flex justify-center">
-                <ReCAPTCHA
-                  sitekey="6LfnBzEsAAAAAHazTGHVGB9ENCtD62Ril4mE5rwJ"
-                  onChange={(value) => setCaptchaValue(value)}
-                />
-              </div>
+              {/* RIGHT: FORM PANEL */}
+              <div className="flex min-h-[32rem] flex-col justify-center p-6 sm:p-8 md:p-10">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label
+                        htmlFor="contact-name"
+                        className="mb-2 block text-left text-sm font-medium"
+                      >
+                        Your Name
+                      </label>
+                      <input
+                        id="contact-name"
+                        type="text"
+                        name="name"
+                        placeholder="Captain Jane"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full rounded-md border border-border bg-background px-4 py-2.5"
+                      />
+                    </div>
 
-              <button
-                type="submit"
-                className="cosmic-button w-full"
-              >
-                Launch Message 🚀
-              </button>
-            </form>
+                    <div>
+                      <label
+                        htmlFor="contact-email"
+                        className="mb-2 block text-left text-sm font-medium"
+                      >
+                        Email Address
+                      </label>
+                      <input
+                        id="contact-email"
+                        type="email"
+                        name="email"
+                        placeholder="captainjane@gmail.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full rounded-md border border-border bg-background px-4 py-2.5"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-service"
+                      className="mb-2 block text-left text-sm font-medium"
+                    >
+                      Service Required
+                    </label>
+                    <div className="relative w-full">
+                      <select
+                        id="contact-service"
+                        name="service"
+                        value={formData.service}
+                        onChange={handleChange}
+                        required
+                        className="w-full appearance-none rounded-md border border-border bg-background px-4 py-2.5"
+                      >
+                        <option value="">Select a service</option>
+                        <option value="Website Development">
+                          Website Development
+                        </option>
+                        <option value="SEO & AEO (AI Search Visibility)">
+                          SEO &amp; AEO (AI Search Visibility)
+                        </option>
+                        <option value="Landing Page">Landing Page</option>
+                        <option value="E-commerce Website">
+                          E-commerce Website
+                        </option>
+                        <option value="Website Redesign">
+                          Website Redesign
+                        </option>
+                        <option value="Maintenance & Support">
+                          Maintenance &amp; Support
+                        </option>
+                        <option value="Other">Other</option>
+                      </select>
+                      {/* Down Arrow Icon */}
+                      <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                        <svg
+                          className="h-4 w-4 text-gray-500"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19 9l-7 7-7-7"
+                          ></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-message"
+                      className="mb-2 block text-left text-sm font-medium"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      placeholder="Your Transmission..."
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      className="w-full resize-none rounded-md border border-border bg-background px-4 py-2.5"
+                    />
+                  </div>
+
+                  {/* CAPTCHA */}
+                  <div className="flex justify-center overflow-hidden">
+                    <div className="origin-center scale-90 sm:scale-100">
+                      <ReCAPTCHA
+                        sitekey="6LfnBzEsAAAAAHazTGHVGB9ENCtD62Ril4mE5rwJ"
+                        onChange={(value) => setCaptchaValue(value)}
+                      />
+                    </div>
+                  </div>
+
+                  <button type="submit" className="cosmic-button w-full">
+                    Launch Message &#128640;
+                  </button>
+                </form>
+              </div>
+            </div>
           )}
         </motion.div>
       </div>

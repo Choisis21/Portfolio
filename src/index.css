@@ -101,6 +101,9 @@ h6 {
     --primary: 24 95% 55%;
     --primary-foreground: 33 100% 98%;
     --border: 20 15% 85%;
+    /* Stars/meteors: dark on light background so they stay visible */
+    --star: 20 20% 20%;
+    --star-glow: 20 20% 20% / 0.25;
   }
 
   .dark {
@@ -110,6 +113,9 @@ h6 {
     --primary: 30 90% 60%;
     --primary-foreground: 20 10% 8%;
     --border: 20 10% 30%;
+    /* Stars/meteors: white on dark background */
+    --star: 0 0% 100%;
+    --star-glow: 0 0% 100% / 0.4;
   }
 
   * {
@@ -179,13 +185,15 @@ h6 {
 }
 
 @utility star {
-  @apply absolute bg-white rounded-full;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+  @apply absolute rounded-full;
+  background-color: hsl(var(--star));
+  box-shadow: 0 0 10px 2px hsl(var(--star-glow));
 }
 
 @utility meteor {
-  @apply absolute bg-gradient-to-r from-white to-transparent rounded-full;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  @apply absolute rounded-full;
+  background-image: linear-gradient(to right, hsl(var(--star)), transparent);
+  box-shadow: 0 0 10px 5px hsl(var(--star-glow));
   transform: rotate(215deg);
   opacity: 0;
   animation-fill-mode: backwards;

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import heroImg from "../assets/Chosen.jpg";
+import heroImg from "../assets/Chosen.webp";
 import htmlIcon from "../assets/html.svg";
 import cssIcon from "../assets/css.svg";
 import wordpressIcon from "../assets/wordpress.svg";
@@ -58,7 +58,7 @@ export default function Hero() {
           custom={0.2}
           className="text-2xl md:text-4xl font-[Exo_2,_sans-serif] font-semibold mt-2 mb-6"
         >
-          A Web Developer
+          A Software Developer
         </motion.h2>
 
         {/* Main Layout */}
@@ -95,7 +95,7 @@ export default function Hero() {
             <img
               src={heroImg}
               className="w-52 md:w-72 lg:w-80 object-cover rounded-full shadow-lg"
-              alt="Chosen - Web Developer"
+              alt="Chosen - Software Developer"
               loading="lazy"
             />
 

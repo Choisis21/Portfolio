@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { CodeXml,Braces } from "lucide-react";
-import profileImg from "../assets/Olu.jpg";
+import profileImg from "../assets/Olu.webp";
 import cvFile from "../assets/Chosen.pdf";
 
 /* ------------------------------
@@ -125,10 +125,11 @@ const AboutSection = () => {
             variants={fadeUp}
             className="leading-relaxed text-base md:text-lg mb-4 text-foreground/90"
           >
-            I am a passionate Front-End Web Developer who loves turning ideas into
-            interactive digital experiences. I focus on creating clean,
-            responsive, and user-friendly websites that not only look good but
-            also perform smoothly across all devices.
+            I am a passionate Software Developer who loves turning ideas into
+            working products, from budgeting platforms and e-commerce stores to
+            the automation behind a hosting business. I focus on building clean,
+            responsive software that not only looks good but performs smoothly
+            at scale.
           </motion.p>
 
           <motion.p
@@ -147,6 +148,19 @@ const AboutSection = () => {
             </span>
             , and I am always learning new tools to stay ahead in the
             ever-evolving tech space.
+          </motion.p>
+
+          <motion.p
+            variants={fadeUp}
+            className="leading-relaxed text-base md:text-lg mb-8 text-foreground/90"
+          >
+            I also build for how people search today. Alongside traditional{" "}
+            <span className="font-semibold text-primary">SEO</span>, I apply{" "}
+            <span className="font-semibold text-primary">
+              Answer Engine Optimization (AEO),
+            </span>{" "}
+            structuring content and data so that ChatGPT, Perplexity, and
+            Google&apos;s AI Overviews can read, trust, and cite it.
           </motion.p>
 
           <motion.p

@@ -4,14 +4,18 @@ import { FiExternalLink } from "react-icons/fi";
 import { Maximize2 } from "lucide-react";
 
 // PORTFOLIO IMAGES
-import CorvusImg from "../assets/raven.png";
-import AGImg from "../assets/A&G.png";
-import ChosenImg from "../assets/Dark.png";
-import ZumaImg from "../assets/zuma.png";
-import VFImg from "../assets/victorias-foundacion.png";
-import VCImg from "../assets/victoriascloud.png";
+import CorvusImg from "../assets/raven.webp";
+import AGImg from "../assets/A&G.webp";
+import ChosenImg from "../assets/Dark.webp";
+import ZumaImg from "../assets/zuma.webp";
+import VFImg from "../assets/victorias-foundacion.webp";
+import VCImg from "../assets/victoriascloud.webp";
 import ABImg from "../assets/AB.webp";
-import FIFIImg from "../assets/fifilondon.png";
+import FIFIImg from "../assets/fifilondon.webp";
+import RegalImg from "../assets/regal.webp";
+import ForestImg from "../assets/forest.webp";
+import BenisonImg from "../assets/benison.webp";
+import LeadmanImg from "../assets/leadman.webp";
 
 const categories = ["All", "Code", "CMS", "Dark", "E-commerce", "Light", "Web Hosting"];
 
@@ -26,13 +30,49 @@ const items = [
       "A simple budgeting platform that allows users to track expenses, avoid impulse spending, manage money, and achieve financial goals.",
   },
   {
+    name: "Regal Wears",
+    img: RegalImg,
+    link: "https://regalwears.vercel.app/",
+    category: ["Code", "Light", "E-commerce"],
+    type: "E-commerce",
+    description:
+      "A luxury ladies' fashion store with category browsing, quick add to cart, wishlist, sale badges and a style journal.",
+  },
+  {
+    name: "Forest Sentry",
+    img: ForestImg,
+    link: "https://forestsentry.com/",
+    category: ["CMS", "Light", "E-commerce"],
+    type: "E-commerce",
+    description:
+      "An Oregon manufacturer selling heavy-duty forestry road gates, solar-powered security systems and fire suppression equipment online.",
+  },
+  {
+    name: "Benison Home Medicare",
+    img: BenisonImg,
+    link: "https://benison.ng/",
+    category: ["Code", "Light"],
+    type: "Healthcare",
+    description:
+      "A home care provider offering skilled nursing, medication management and companionship, with tailored care plans and 24/7 booking.",
+  },
+  {
+    name: "TheLeadMan Africa",
+    img: LeadmanImg,
+    link: "https://www.theleadman.org/",
+    category: ["Code", "Dark"],
+    type: "Training",
+    description:
+      "A leadership training brand equipping legislators, entrepreneurs and young professionals with the soft skills that drive career growth.",
+  },
+  {
     name: "FifiLondon",
     img: FIFIImg,
     link: "https://fifilondon.co/",
     category: ["CMS", "Light", "E-commerce"],
     type: "E-commerce",
     description:
-      "A modern women's fashion store created to to match each season, new arrivals, shopping options, and customer support information.",
+      "A modern women's fashion store created to match each season, new arrivals, shopping options, and customer support information.",
   },
   {
     name: "A & G Law Firm",
@@ -63,6 +103,7 @@ const items = [
   },
   {
     name: "Victoria's Foundation",
+    hideFromAll: true,
     img: VFImg,
     link: "https://www.victoriasfundacion.nl/",
     category: ["Light", "CMS"],
@@ -72,6 +113,7 @@ const items = [
   },
   {
     name: "Corvus Aurum",
+    hideFromAll: true,
     img: CorvusImg,
     category: ["CMS", "Dark"],
     type: "NFT",
@@ -80,6 +122,7 @@ const items = [
   },
   {
     name: "Victoria's Cloud",
+    hideFromAll: true,
     img: VCImg,
     category: ["Light", "CMS", "Web Hosting"],
     type: "Web Hosting",
@@ -93,15 +136,18 @@ const Projects = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeImage, setActiveImage] = useState(null);
 
+  const query = searchQuery.trim().toLowerCase();
+
   const filteredItems = items.filter((item) => {
-    const matchesCategory =
-      selectedCategory === "All" || item.category.includes(selectedCategory);
+    const matchesSearch = item.name.toLowerCase().includes(query);
 
-    const matchesSearch = item.name
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
+    if (selectedCategory === "All") {
+      // Some projects are reachable only through their own categories,
+      // or by searching for them by name.
+      return matchesSearch && (!item.hideFromAll || query !== "");
+    }
 
-    return matchesCategory && matchesSearch;
+    return item.category.includes(selectedCategory) && matchesSearch;
   });
 
   return (

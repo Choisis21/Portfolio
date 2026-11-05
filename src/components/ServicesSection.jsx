@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Wrench, Globe, ChevronsLeftRight } from "lucide-react";
 import Curly from "../assets/curly.svg";
-import serviceImg from "../assets/Chosen.jpg";
+import serviceImg from "../assets/Chosen.webp";
 
 /* ------------------ ANIMATION VARIANTS ------------------ */
 
@@ -103,21 +103,21 @@ const ServicesSection = () => {
                 Web Development
               </h3>
               <p className="text-sm opacity-75">
-                Building high-performance, responsive websites designed to attract users, increase conversions, and generate measurable business results.
+                Building high-performance, responsive websites that rank on Google, get cited by AI answer engines, and turn visitors into customers.
               </p>
             </motion.div>
 
-            {/* FRONT-END DEVELOPMENT */}
+            {/* SOFTWARE DEVELOPMENT */}
             <motion.div
               className="card card-hover pt-5 pb-10 px-10 text-center sm:text-left lg:mt-15"
               variants={cardFadeUp}
             >
               <div className={iconWrapper}>{`{...}`}</div>
               <h3 className="font-semibold text-lg mt-3 mb-2">
-                Front-End Development
+                Software Development
               </h3>
               <p className="text-sm opacity-75">
-                Transforming UI designs into interactive, high-performance web experiences.
+                Building custom web applications, dashboards, and internal tools, from database and API to interface, that scale with your business.
               </p>
             </motion.div>
 
@@ -133,7 +133,7 @@ const ServicesSection = () => {
                 Website Maintenance
               </h3>
               <p className="text-sm opacity-75">
-                I'll handle updates, security, and performance so your website stays fast, safe, and dependable at all times.
+                I'll handle updates, security, performance, and search visibility so your site stays fast, safe, and easy for people and AI assistants to find.
               </p>
             </motion.div>
 
