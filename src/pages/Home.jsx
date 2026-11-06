@@ -8,7 +8,7 @@ import Experience from "../components/Experience"
 
 export const Home = () => { 
     
-    return <div className="min-h-screen bg-background text-foreground overflow-x-hidden overflow-y-hidden">        
+    return <div className="min-h-screen bg-background text-foreground overflow-x-clip">        
         {/* Background Effects */}
         <StarBackground />
 

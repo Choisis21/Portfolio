@@ -26,7 +26,7 @@ export default function Hero() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="container relative z-0 min-h-[calc(100vh-120px)] flex flex-col justify-center pt-30 pb-16 md:pb-24"
+        className="container relative z-0 hero-min-h flex flex-col justify-center pt-30 pb-16 md:pb-24"
       >
         {/* Greeting */}
         <motion.div

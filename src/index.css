@@ -184,6 +184,29 @@ h6 {
          hover:scale-105 active:scale-95;
 }
 
+/* Mobile browsers (notably Android/Samsung) report 100vh as the viewport
+   with the URL bar HIDDEN, so 100vh overflows the screen while the bar is
+   visible. The vh line is the fallback; svh/dvh wins where supported. */
+@utility hero-min-h {
+  min-height: calc(100vh - 120px);
+  min-height: calc(100svh - 120px);
+}
+
+@utility screen-h {
+  height: 100vh;
+  height: 100dvh;
+}
+
+@utility modal-max-h {
+  max-height: 90vh;
+  max-height: 90dvh;
+}
+
+@utility modal-scroll-max-h {
+  max-height: 80vh;
+  max-height: 80dvh;
+}
+
 @utility star {
   @apply absolute rounded-full;
   background-color: hsl(var(--star));

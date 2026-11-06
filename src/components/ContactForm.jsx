@@ -165,7 +165,7 @@ export default function ContactForm() {
             /* ---------- TWO-COLUMN FORM LAYOUT ---------- */
             <div className="grid lg:grid-cols-2">
               {/* LEFT: ILLUSTRATION PANEL */}
-              <aside className="relative flex flex-col items-center justify-center gap-6 overflow-hidden border-b border-border bg-primary/10 p-8 text-center sm:p-10 lg:border-b-0 lg:border-r">
+              <aside className="relative flex min-w-0 flex-col items-center justify-center gap-6 overflow-hidden border-b border-border bg-primary/10 p-6 text-center sm:p-10 lg:border-b-0 lg:border-r">
                 {/* soft glow */}
                 <div
                   aria-hidden="true"
@@ -203,7 +203,7 @@ export default function ContactForm() {
               </aside>
 
               {/* RIGHT: FORM PANEL */}
-              <div className="flex min-h-[32rem] flex-col justify-center p-6 sm:p-8 md:p-10">
+              <div className="flex min-h-[32rem] min-w-0 flex-col justify-center p-5 sm:p-8 md:p-10">
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
@@ -320,8 +320,12 @@ export default function ContactForm() {
                   </div>
 
                   {/* CAPTCHA */}
-                  <div className="flex justify-center overflow-hidden">
-                    <div className="origin-center scale-90 sm:scale-100">
+                  {/* The reCAPTCHA iframe has a fixed 304px width. Without
+                      min-w-0 + a scale that fits, it sets the card's
+                      min-content width and pushes the layout wider than
+                      small screens. */}
+                  <div className="flex w-full min-w-0 justify-center overflow-hidden">
+                    <div className="origin-center shrink-0 scale-[0.78] min-[380px]:scale-90 sm:scale-100">
                       <ReCAPTCHA
                         sitekey="6LfnBzEsAAAAAHazTGHVGB9ENCtD62Ril4mE5rwJ"
                         onChange={(value) => setCaptchaValue(value)}

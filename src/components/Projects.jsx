@@ -308,7 +308,7 @@ const Projects = () => {
           onClick={() => setActiveImage(null)}
         >
           <motion.div
-            className="relative max-w-5xl w-full max-h-[90vh] bg-card dark:bg-card-dark rounded-xl overflow-hidden"
+            className="relative max-w-5xl w-full modal-max-h bg-card dark:bg-card-dark rounded-xl overflow-hidden"
             initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.25 }}
@@ -326,7 +326,7 @@ const Projects = () => {
               </button>
             </div>
 
-            <div className="overflow-y-auto max-h-[80vh] scrollbar-hide">
+            <div className="overflow-y-auto modal-scroll-max-h scrollbar-hide">
               <img
                 src={activeImage.img}
                 alt={activeImage.name}

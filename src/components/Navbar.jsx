@@ -159,7 +159,7 @@ export const Navbar = () => {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "fixed inset-0 top-0 h-screen overflow-hidden z-40 bg-black/80 backdrop-blur-md flex flex-col items-center pt-8 space-y-6 text-xl lg:hidden transition-all duration-300",
+            "fixed inset-0 top-0 screen-h overflow-y-auto overscroll-contain z-40 bg-black/80 backdrop-blur-md flex flex-col items-center pt-8 pb-10 space-y-6 text-xl lg:hidden transition-all duration-300",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
